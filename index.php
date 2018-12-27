@@ -11,6 +11,7 @@ require_once('vendor/autoload.php');
 
 use App\Config;
 use App\Router;
+use App\Database;
 
 if (Config::DISPLAY_ERRORS)
 {
