@@ -18,7 +18,7 @@ class CustomerModel
         $query->bindParam(':id', $id, PDO::PARAM_INT);
         $query->execute();
 
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     /**
@@ -30,10 +30,10 @@ class CustomerModel
 
         $sql = "SELECT * FROM `Customer` WHERE `Email` = :email LIMIT 1";
         $query = $db->prepare($sql);
-        $query->bindParam(':email', $id, PDO::PARAM_STR);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->execute();
 
-        return $query->fetchAll();
+        return $query->fetch();
     }
 
     /**
@@ -44,7 +44,7 @@ class CustomerModel
     {
         $customer = $this->getCustomerByEmail($email);
 
-        if (password_verify($password, $customer->Password))
+        if ($customer != null && password_verify($password, $customer->Password))
             return $customer;
 
         return null;
