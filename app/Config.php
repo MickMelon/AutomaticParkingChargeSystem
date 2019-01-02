@@ -9,7 +9,7 @@ class Config
     const DB_SERVER = 'localhost';
     const DB_NAME = 'apcs';
     const DB_USER = 'root';
-    const DB_PASS = '';
+    const DB_PASS = 'P@ssw0rd';
 
     const DISPLAY_ERRORS = true;
 }
