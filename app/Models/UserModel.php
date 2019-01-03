@@ -4,12 +4,12 @@ namespace App\Models;
 use App\Database;
 use PDO;
 
-class CustomerModel 
+class UserModel 
 {
     /**
-     * Gets a customer by their ID.
+     * Gets a User by their ID.
      */
-    public function getCustomerById($id)
+    public function getUserById($id)
     {
         $db = Database::getInstance();
 
@@ -22,9 +22,9 @@ class CustomerModel
     }
 
     /**
-     * Gets a customer by their email address.
+     * Gets a User by their email address.
      */
-    public function getCustomerByEmail($email)
+    public function getUserByEmail($email)
     {
         $db = Database::getInstance();
 
@@ -37,23 +37,23 @@ class CustomerModel
     }
 
     /**
-     * Gets a customer by their email and password, used for 
+     * Gets a User by their email and password, used for 
      * the login.
      */
-    public function getCustomerByEmailPassword($email, $password)
+    public function getUserByEmailPassword($email, $password)
     {
-        $customer = $this->getCustomerByEmail($email);
+        $User = $this->getUserByEmail($email);
 
-        if ($customer != null && password_verify($password, $customer->Password))
-            return $customer;
+        if ($User != null && password_verify($password, $User->Password))
+            return $User;
 
         return null;
     }
 
     /**
-     * Inserts a new customer into the database.
+     * Inserts a new User into the database.
      */
-    public function createCustomer($firstName, $lastName, $email, $password)
+    public function createUser($firstName, $lastName, $email, $password)
     {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = Database::getInstance();
