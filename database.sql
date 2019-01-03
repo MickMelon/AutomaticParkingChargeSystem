@@ -63,7 +63,7 @@ CREATE TABLE `Parking` (
 */
 CREATE TABLE `Permit` (
     `UserID` int NOT NULL,
-    `Reg` int NOT NULL,
+    `Reg` varchar(10) NOT NULL,
     `StartDate` datetime NOT NULL DEFAULT NOW(),
     `EndDate` datetime NOT NULL,
 
