@@ -4,7 +4,7 @@ if (isset($errors)) {
         echo '<p style="color:red;">' . $error . '</p>';
     } 
 } 
- ?>
+?>
 <form action="index.php?controller=register&action=register" method="post">
     First Name: <input type="text" name="firstName"><br />
     Last Name: <input type="text" name="lastName"><br />

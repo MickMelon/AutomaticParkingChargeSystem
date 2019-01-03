@@ -1,7 +1,7 @@
 /**
-* Customer Table
+* User Table
 */
-CREATE TABLE `Customer` (
+CREATE TABLE `User` (
     `ID` int NOT NULL AUTO_INCREMENT,
     `FirstName` varchar(16) NOT NULL,
     `LastName` varchar(16) NOT NULL,
@@ -27,11 +27,10 @@ CREATE TABLE `Admin` (
 */
 CREATE TABLE `Vehicle` (
 	`Reg` varchar(10) NOT NULL,
-    `CustomerID` int NOT NULL,
-    `HasPermit` bit(1) NOT NULL DEFAULT 0,
+    `UserID` int NOT NULL
 
     PRIMARY KEY (`Reg`),
-    FOREIGN KEY (`CustomerID`) REFERENCES `Customer`(`ID`)
+    FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`)
 );
 
 /**
@@ -57,4 +56,18 @@ CREATE TABLE `Parking` (
     PRIMARY KEY (`Reg`, `EntryDateTime`),
     FOREIGN KEY (`Reg`) REFERENCES `Vehicle`(`Reg`),
     FOREIGN KEY (`CarparkID`) REFERENCES `Carpark`(`ID`)
+);
+
+/**
+* Permit Table
+*/
+CREATE TABLE `Permit` (
+    `UserID` int NOT NULL,
+    `Reg` int NOT NULL,
+    `StartDate` datetime NOT NULL DEFAULT NOW(),
+    `EndDate` datetime NOT NULL,
+
+    PRIMARY KEY (`UserID`, `Reg`, `StartDate`),
+    FOREIGN KEY (`UserID`) REFERENCES `User`(`ID`),
+    FOREIGN KEY (`Reg`) REFERENCES `Vehicle`(`Reg`)
 );

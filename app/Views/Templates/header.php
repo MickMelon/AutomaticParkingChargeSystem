@@ -9,6 +9,7 @@
             <li><a href="index.php">Home</a></li>
             <?php if ($loggedIn) { ?>
                 <li><a href="index.php?controller=login&action=logout">Logout</a></li>
+                <li><a href="index.php?controller=vehicle&action=index">Vehicles</a></li>
             <?php } else { ?>
                 <li><a href="index.php?controller=login&action=index">Login</a></li>
                 <li><a href="index.php?controller=register&action=index">Register</a></li>
