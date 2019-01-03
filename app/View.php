@@ -1,8 +1,8 @@
 <?php 
 namespace App;
 
-use App\Util;
 use App\Config;
+use App\Helpers\AuthHelper;
 
 class View
 {
@@ -23,7 +23,7 @@ class View
         if (file_exists($file)) 
             $this->file = $file;
         else 
-            $this->file = 'app/Views/Pages/error.php';
+            $this->file = 'app/Views/Pages/error.php'; 
     }
 
     /**
@@ -39,10 +39,22 @@ class View
      */
     public function render()
     {
+        $this->assignDefaultVariables();
         extract($this->data); 
 
         include(View::HEADER_FILE);
         include($this->file);
         include(View::FOOTER_FILE);
+    }
+
+    /**
+     * Assigns the variables that will be used commonly amongst
+     * the different views.
+     */
+    private function assignDefaultVariables()
+    {
+        $this->assign('siteTitle', Config::SITE_TITLE);
+        $this->assign('loggedIn', AuthHelper::isLoggedIn());
+        $this->assign('isAdmin', AuthHelper::isAdmin());
     }
 }

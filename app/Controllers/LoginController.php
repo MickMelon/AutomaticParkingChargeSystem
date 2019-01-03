@@ -94,10 +94,10 @@ class LoginController
      */
     private function authenticate($email, $password)
     {
-        $user = $this->UserModel->getUserByEmailPassword($email, $password);
+        $user = $this->userModel->getUserByEmailPassword($email, $password);
 
         if ($user == null) return -1;
 
-        return $user['ID'];
+        return $user->ID;
     }
 }

@@ -7,13 +7,13 @@ use PDO;
 class UserModel 
 {
     /**
-     * Gets a User by their ID.
+     * Gets a user by their ID.
      */
     public function getUserById($id)
     {
         $db = Database::getInstance();
 
-        $sql = "SELECT * FROM `Customer` WHERE `ID` = :id LIMIT 1";
+        $sql = "SELECT * FROM `User` WHERE `ID` = :id LIMIT 1";
         $query = $db->prepare($sql);
         $query->bindParam(':id', $id, PDO::PARAM_INT);
         $query->execute();
@@ -22,13 +22,13 @@ class UserModel
     }
 
     /**
-     * Gets a User by their email address.
+     * Gets a user by their email address.
      */
     public function getUserByEmail($email)
     {
         $db = Database::getInstance();
 
-        $sql = "SELECT * FROM `Customer` WHERE `Email` = :email LIMIT 1";
+        $sql = "SELECT * FROM `User` WHERE `Email` = :email LIMIT 1";
         $query = $db->prepare($sql);
         $query->bindParam(':email', $email, PDO::PARAM_STR);
         $query->execute();
@@ -37,28 +37,28 @@ class UserModel
     }
 
     /**
-     * Gets a User by their email and password, used for 
+     * Gets a user by their email and password, used for 
      * the login.
      */
     public function getUserByEmailPassword($email, $password)
     {
-        $User = $this->getUserByEmail($email);
+        $user = $this->getUserByEmail($email);
 
-        if ($User != null && password_verify($password, $User->Password))
-            return $User;
+        if ($user != null && password_verify($password, $user->Password))
+            return $user;
 
         return null;
     }
 
     /**
-     * Inserts a new User into the database.
+     * Inserts a new user into the database.
      */
     public function createUser($firstName, $lastName, $email, $password)
     {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $db = Database::getInstance();
 
-        $sql = "INSERT INTO `Customer` (`FirstName`, `LastName`, `Email`, `Password`)"
+        $sql = "INSERT INTO `User` (`FirstName`, `LastName`, `Email`, `Password`)"
             . " VALUES (:firstName, :lastName, :email, :password)";
         $query = $db->prepare($sql);
         $query->bindParam(':firstName', $firstName, PDO::PARAM_STR);

@@ -11,6 +11,7 @@ class PageController
     public function home()
     {
         $view = new View('Pages/home');
+        $view->assign('pageTitle', 'Home');
         $view->render();
     }
 

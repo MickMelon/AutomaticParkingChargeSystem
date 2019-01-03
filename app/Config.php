@@ -12,4 +12,6 @@ class Config
     const DB_PASS = 'P@ssw0rd';
 
     const DISPLAY_ERRORS = true;
+
+    const SITE_TITLE = 'APCS-Web';
 }

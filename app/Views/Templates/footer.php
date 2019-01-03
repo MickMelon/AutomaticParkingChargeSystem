@@ -1,1 +1,7 @@
-<p>Footer</p>
+    </main>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+</body>
+</html>
