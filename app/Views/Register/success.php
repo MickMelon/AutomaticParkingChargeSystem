@@ -1,0 +1,1 @@
+You registered successfully. You can now <a href="index.php?controller=login&action=index">login</a>.
