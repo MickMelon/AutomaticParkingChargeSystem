@@ -63,4 +63,24 @@ class VehicleModel
         $query->bindParam('reg', $reg, PDO::PARAM_STR);
         $query->execute();
     }
+
+    public function addPermit($reg)
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Vehicle` SET `HasPermit` = 1 WHERE `Reg` = :reg";
+        $query = $db->prepare($sql);
+        $query->bindParam('reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+    }
+
+    public function removePermit($reg)
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Vehicle` SET `HasPermit` = 0 WHERE `Reg` = :reg";
+        $query = $db->prepare($sql);
+        $query->bindParam('reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+    }
 }

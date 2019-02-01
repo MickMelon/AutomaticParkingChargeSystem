@@ -12,7 +12,11 @@ else foreach ($vehicles as $vehicle) { ?>
 <a href="index.php?controller=vehicle&action=remove&reg=<?= $vehicle->Reg ?>">
     Remove
 </a> | 
-<a href="#">Purchase Permit</a>
+<?php if ($vehicle->HasPermit) { ?>
+    Valid Permit
+<?php } else { ?>
+    <a href="index.php?controller=vehicle&action=purchasepermit&reg=<?= $vehicle->Reg ?>">Purchase Permit</a>
+<?php } ?>
 <br /><hr />
 <?php } ?>
 

@@ -75,14 +75,43 @@ class VehicleController
             {
                 $errors[] = 'You cannot remove that vehicle for some reason.';
                 $this->index($errors);
+                return;
             }
-            else 
-            {
-                $this->vehicleModel->deleteVehicle($reg);
-                header('Location: index.php?controller=vehicle&action=index');
-            }
+            $this->vehicleModel->deleteVehicle($reg);
+            header('Location: index.php?controller=vehicle&action=index');            
         } 
         else 
             header('Location: index.php');
+    }
+
+    public function purchasePermit()
+    {
+        if (AuthHelper::isLoggedIn() && isset($_GET['reg']))
+        {
+            $reg = filter_var($_GET['reg'], FILTER_SANITIZE_STRING);
+            $userId = $_SESSION['id'];
+            $vehicle = $this->vehicleModel->getVehicle($reg);
+
+            if ($vehicle == null || $vehicle->UserID != $userId)
+            {
+                $errors[] = 'You cannot purchase a permit for that vehicle.';
+                $this->index($errors);
+                return;
+            }
+
+            if ($vehicle->HasPermit)
+            {
+                $errors[] = 'You already have a permit for that vehicle.';
+                $this->index($errors);
+                return;
+            }
+            
+            // Get monies from the fucker
+            // Add the permit if payment successful.
+            // Let's pretend the payment was successful for now until we implement Stripe
+            
+            $this->vehicleModel->addPermit($reg);
+            header('Location: index.php?controller=vehicle&action=index');
+        }
     }
 }
