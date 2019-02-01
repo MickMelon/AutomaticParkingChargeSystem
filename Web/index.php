@@ -6,6 +6,8 @@
 * the requested action.
 */
 
+echo "Login details: [ Email: test@user.com, Password: P@ssw0rd ]";
+
 session_start();
 require_once('vendor/autoload.php');
 

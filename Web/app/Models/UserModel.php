@@ -68,4 +68,23 @@ class UserModel
 
         $query->execute();
     }
+
+    public function updateUser($id, $firstName, $lastName, $password)
+    {
+        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `User` SET "
+            . " `FirstName` = :firstName,"
+            . " `LastName` = :lastName,"
+            . " `Password` = :password"
+            . " WHERE `ID` = :id";
+        $query = $db->prepare($sql);
+        $query->bindParam(':firstName', $firstName, PDO::PARAM_STR);
+        $query->bindParam(':lastName', $lastName, PDO::PARAM_STR);
+        $query->bindParam(':password', $hash, PDO::PARAM_STR);
+        $query->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $query->execute();
+    }
 }
