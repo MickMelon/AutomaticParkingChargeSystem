@@ -14,4 +14,11 @@ class Config
     const DISPLAY_ERRORS = true;
 
     const SITE_TITLE = 'APCS-Web';
+
+    const PERMIT_PRICE_POUNDS = 30;
+
+    const STRIPE_SECRET_KEY = 'sk_test_jPnPepQS0C4z8yWmjMgjT8P0';
+    const STRIPE_PUBLIC_KEY = 'pk_test_MQXGNKwdA9Rak9gcEkDkucTM';
+    // Stripe test cards: https://stripe.com/docs/testing
+    // Visa: 4242424242424242
 }

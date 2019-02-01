@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\VehicleModel;
 use App\Helpers\AuthHelper;
+use App\Config;
 use App\View;
 
 class VehicleController 
@@ -106,12 +107,35 @@ class VehicleController
                 return;
             }
             
-            // Get monies from the fucker
-            // Add the permit if payment successful.
-            // Let's pretend the payment was successful for now until we implement Stripe
-            
+            $view = new View('Vehicle/purchase_permit');
+            $view->assign('pageTitle', 'Stripe Payment');
+            $view->assign('amount', Config::PERMIT_PRICE_POUNDS * 100);
+            $view->assign('publicKey', Config::STRIPE_PUBLIC_KEY);
+            $view->assign('reg', $vehicle->Reg);
+            $view->render();
+        }
+    }
+
+    public function submitPermitPayment()
+    {
+        if (isset($_POST['reg']))
+        {
+            $reg = $_POST['reg'];
+
+            \Stripe\Stripe::setApiKey(Config::STRIPE_SECRET_KEY);
+            $token = $_POST['stripeToken'];
+    
+            $charge = \Stripe\Charge::create(
+                    ['amount' => Config::PERMIT_PRICE_POUNDS * 100,
+                    'currency' => 'gbp',
+                    'source' => $token,
+                    'description' => 'Season permit payment']
+                );
+
             $this->vehicleModel->addPermit($reg);
             header('Location: index.php?controller=vehicle&action=index');
         }
+        else
+            header('Location: index.php');       
     }
 }

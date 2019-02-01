@@ -1,6 +1,7 @@
 {
 
     "require": {
+        "stripe/stripe-php": "^6.29"
     },
     "autoload": {
         "psr-4": {
