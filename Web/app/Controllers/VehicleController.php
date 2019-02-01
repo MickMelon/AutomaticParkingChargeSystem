@@ -49,12 +49,12 @@ class VehicleController
             {
                 $errors[] = 'That vehicle is already registered to an account.';
                 $this->index($errors);
+                return;
             }
-            else 
-            {
-                $this->vehicleModel->createVehicle($reg, $userId);
-                header('Location: index.php?controller=vehicle&action=index');
-            }        
+
+            $this->vehicleModel->createVehicle($reg, $userId);
+            header('Location: index.php?controller=vehicle&action=index');
+                   
         }
         else 
             header('Location: index.php');
