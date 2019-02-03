@@ -5,12 +5,24 @@ if (isset($errors)) {
     } 
 } 
 ?>
-<form action="index.php?controller=register&action=register" method="post">
+<form action="index.php?controller=register&action=register" method="post" onsubmit="return checkForm()">
     First Name: <input type="text" name="firstName" maxlength="16" required><br />
     Last Name: <input type="text" name="lastName" maxlength="16" required><br />
     Email: <input type="email" name="email" maxlength="128" required><br />
-    Password: <input type="password" name="password" minlength="6" required><br />
-    Confirm Password: <input type="password" name="confirmPassword" minlength="6" required><br />
+    Password: <input type="password" name="password" id="password" minlength="6" required><br />
+    Confirm Password: <input type="password" name="confirmPassword" id="confirmPassword" minlength="6" required><br />
 
     <input type="submit" value="Register" />
 </form>
+
+<script>
+function checkForm() {
+    var password = document.getElementById("password").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password === confirmPassword) return true;
+
+    alert("Entered passwords do not match.");
+    return false;
+}
+</script>
