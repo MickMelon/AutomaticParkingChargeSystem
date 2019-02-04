@@ -6,12 +6,18 @@ namespace APCS.Server
     /// <summary>
     /// The class that starts the program up.
     /// </summary>
-    class Program
+    public class Program
     {
         /// <summary>
         /// The method that starts the program up.
         /// </summary>
-        static void Main(string[] args)
+        public static void Main(string[] args)
+        {
+            Server.StartServer(7777);
+            Server.Listen();
+        }
+
+        private static void DoOpenALPR()
         {
             Task<Vehicle> recognizeTask = Task.Run(() => OpenALPR.ReadReg(@"car.jpg"));
             recognizeTask.Wait();
