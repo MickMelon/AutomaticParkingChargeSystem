@@ -10,7 +10,7 @@
         <td><?= $carpark->ID ?></td>
         <td><?= $carpark->Name ?></td>
         <td><?= $carpark->Price ?></td>
-        <td><a href="index.php?controller=admin&action=updatecarpark&id=<?= $carpark->ID ?>">Update</a></td>
+        <td><a href="index.php?controller=carpark&action=update&id=<?= $carpark->ID ?>">Update</a></td>
     </tr>
     <?php } ?>
 </table>
