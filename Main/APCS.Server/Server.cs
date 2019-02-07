@@ -14,13 +14,13 @@ namespace APCS.Server
 
 		public static void StartServer(int port) 
         {
-			IPAddress address = IPAddress.Parse("127.0.0.1");
+			IPAddress address = IPAddress.Parse("192.168.1.8");
 			_listener = new TcpListener(address, port);
 
 			_listener.Start();
 			_accept = true;
 
-			Console.WriteLine($"Server started. Listening to TCP clients at 127.0.0.1:{port}");
+			Console.WriteLine($"Server started. Listening to TCP clients at 192.168.1.8:{port}");
 		}
 
 		public static void Listen() 
@@ -39,7 +39,8 @@ namespace APCS.Server
 						string message = "";
 
 						while (message != null && !message.StartsWith("quit")) 
-                        {
+						{
+							Console.WriteLine("In while");
 							byte[] data = Encoding.ASCII.GetBytes("Send next data: [enter 'quit' to terminate] ");
 							client.GetStream().Write(data, 0, data.Length);
 
@@ -53,14 +54,17 @@ namespace APCS.Server
                             }
                             else if (message.EndsWith("<IMG>"))
                             {
-                                byte[] imageBuffer = buffer.Take(buffer.Count() - 1).ToArray();
+								Console.WriteLine("DEBUG: Been sent an image");
+                                byte[] imageBuffer = buffer.Take(buffer.Count() - 5).ToArray();
+								Console.WriteLine("DEBUG: Writing image...");
                                 File.WriteAllBytes("image.jpg", imageBuffer);
                                 Console.WriteLine("Image received and written");
-
-                                data = Encoding.ASCII.GetBytes("Got image successfully");
-							    client.GetStream().Write(data, 0, data.Length);
-                            }					
+                                byte[] successMessage = Encoding.ASCII.GetBytes("Got image successfully");
+							    client.GetStream().Write(successMessage, 0, successMessage.Length);
+                            }	
+							else if (message.Equals("quit<TXT>")) break;		
 						}
+
 						Console.WriteLine("Closing connection.");
 						client.GetStream().Dispose();
 					}

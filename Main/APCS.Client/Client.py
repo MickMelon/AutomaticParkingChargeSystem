@@ -1,7 +1,7 @@
 import socket
 
 # Set all the constant definitions
-IMAGE, HOST, PORT = "corsa.jpg", "127.0.0.1", 7777
+IMAGE, HOST, PORT = "corsa.jpg", "192.168.1.8", 7777
 
 MESSAGE = b'REQUEST<EOF>' # <EOF> signifies end of file.
 

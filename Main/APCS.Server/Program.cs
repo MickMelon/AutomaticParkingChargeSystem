@@ -13,8 +13,10 @@ namespace APCS.Server
         /// </summary>
         public static void Main(string[] args)
         {
-            Server.StartServer(7777);
-            Server.Listen();
+            ///Server.StartServer(7777);
+            //Server.Listen();
+            //AsyncServer.StartServer();
+            AsyncSocketListener.StartListening();
         }
 
         private static void DoOpenALPR()
