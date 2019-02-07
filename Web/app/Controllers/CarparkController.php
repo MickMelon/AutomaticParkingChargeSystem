@@ -7,6 +7,9 @@ use App\View;
 
 class CarparkController
 {
+    /**
+     * The Carpark Model for interacting with the database.
+     */
     private $carparkModel;
 
     /**
@@ -33,6 +36,9 @@ class CarparkController
         $view->render();
     }
 
+    /**
+     * Shows the update car park page.
+     */
     public function update()
     {
         if (!AuthHelper::isAdmin() || !isset($_GET['id']))
@@ -47,6 +53,9 @@ class CarparkController
         $view->render();
     }
 
+    /**
+     * Called when the update car park form has been submitted.
+     */
     public function submitUpdate()
     {
         if (!AuthHelper::isAdmin() || !isset($_POST['carparkId']))

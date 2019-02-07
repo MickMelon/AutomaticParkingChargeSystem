@@ -7,6 +7,9 @@ use App\View;
 
 class RegisterController 
 {
+    /**
+     * The User Model for interacting with the database.
+     */
     private $userModel;
 
     /**
@@ -19,6 +22,8 @@ class RegisterController
 
     /**
      * Show the register index page and errors if applicable.
+     * 
+     * @param array $errors Any errors to be displayed.
      */
     public function index($errors = null)
     {

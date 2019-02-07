@@ -6,6 +6,11 @@ use PDO;
 
 class CarparkModel
 {
+    /**
+     * Gets all the car parks in the database.
+     * 
+     * @return array All the car parks.
+     */
     public function getAllCarparks()
     {
         $db = Database::getInstance();
@@ -17,6 +22,13 @@ class CarparkModel
         return $query->fetchAll();
     }
 
+    /**
+     * Gets a car park by its ID.
+     * 
+     * @param int $id The car park ID.
+     * 
+     * @return object The car park or null if not found.
+     */
     public function getCarparkById($id)
     {
         $db = Database::getInstance();
@@ -29,6 +41,13 @@ class CarparkModel
         return $query->fetch();
     }
 
+    /**
+     * Updates a car park.
+     * 
+     * @param int $id The car park ID.
+     * @param string $name The new car park name.
+     * @param double $price The new car park price.
+     */
     public function updateCarpark($id, $name, $price)
     {
         $db = Database::getInstance();

@@ -8,6 +8,9 @@ use App\Util;
 
 class LoginController 
 {
+    /**
+     * The User Model for interacting with the database.
+     */
     private $userModel;
 
     /**

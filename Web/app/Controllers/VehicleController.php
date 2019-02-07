@@ -8,6 +8,9 @@ use App\View;
 
 class VehicleController 
 {
+    /**
+     * The Vehicle Model for interacting with the database.
+     */
     private $vehicleModel;
 
     /**
@@ -20,6 +23,8 @@ class VehicleController
 
     /**
      * Show the vehicles index page.
+     * 
+     * @param array $errors Any errors to be displayed.
      */
     public function index($errors = null)
     {
@@ -80,6 +85,9 @@ class VehicleController
         header('Location: index.php?controller=vehicle&action=index');            
     }
 
+    /**
+     * Called when the purchase permit button has been clicked for a vehicle.
+     */
     public function purchasePermit()
     {
         if (!AuthHelper::isLoggedIn() || !isset($_POST['reg']))
@@ -111,6 +119,9 @@ class VehicleController
         $view->render();        
     }
 
+    /**
+     * Called when a payment has been made successfully.
+     */
     public function submitPermitPayment()
     {
         if (!isset($_POST['reg']))

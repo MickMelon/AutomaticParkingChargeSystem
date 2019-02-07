@@ -6,15 +6,30 @@ use App\Helpers\AuthHelper;
 
 class View
 {
+    /**
+     * The path to the header file.
+     */
     const HEADER_FILE = 'app/Views/Templates/header.php';
+
+    /**
+     * The path to the footer file.
+     */
     const FOOTER_FILE = 'app/Views/Templates/footer.php';
 
+    /**
+     * The variables used on the view page.
+     */
     private $data = array();
+
+    /**
+     * The file location of the view page to be displayed (located in app/Views)
+     */
     private $file = false;
 
     /**
      * Create a new view from the specified template name.
-     * e.g. 'Articles/index'
+     * 
+     * @param string $template The template name (e.g. Articles/index)
      */
     public function __construct($template)
     {
@@ -28,6 +43,16 @@ class View
 
     /**
      * Add the variables that need to be displayed on the view.
+     * 
+     * Example use:
+     * $value = 'Number 21'
+     * $view->assign('name', $value);
+     * 
+     * So in the view, you use the variable like $name to access the value set
+     * in $value.
+     * 
+     * @param string $variable The desired name of the variable.
+     * @param object $value The value of the variable to be used.
      */
     public function assign($variable, $value)
     {

@@ -5,6 +5,9 @@ use PDO;
 
 class Database
 {
+    /**
+     * The singleton database instance.
+     */
     private static $instance = NULL;
 
     /**

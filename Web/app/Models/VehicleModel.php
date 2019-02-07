@@ -8,6 +8,10 @@ class VehicleModel
 {
     /**
      * Gets a vehicle by the reg.
+     * 
+     * @param string $reg The vehicle registration number.
+     * 
+     * @return object The Vehicle.
      */
     public function getVehicle($reg)
     {
@@ -23,6 +27,10 @@ class VehicleModel
 
     /**
      * Gets all vehicles for a user
+     * 
+     * @param int $userId The User ID.
+     * 
+     * @return object All the user's vehicles as an array.
      */
     public function getAllVehiclesForUser($userId)
     {
@@ -38,6 +46,9 @@ class VehicleModel
 
     /**
      * Creates a new vehicle.
+     * 
+     * @param string $reg The vehicle registration number.
+     * @param int $userId The User ID.
      */
     public function createVehicle($reg, $userId)
     {
@@ -53,6 +64,8 @@ class VehicleModel
 
     /**
      * Permanently deletes a vehicle.
+     * 
+     * @param string $reg The vehicle registration number.
      */
     public function deleteVehicle($reg)
     {
@@ -64,21 +77,44 @@ class VehicleModel
         $query->execute();
     }
 
+    /**
+     * Adds a permit to a vehicle.
+     * 
+     * @param string $reg The vehicle registration number.
+     */
     public function addPermit($reg)
     {
         $db = Database::getInstance();
 
-        $sql = "UPDATE `Vehicle` SET `HasPermit` = 1 WHERE `Reg` = :reg";
+        $sql = "UPDATE `Vehicle` SET `HasPermit` = 1 WHERE `Reg` = :reg LIMIT 1";
         $query = $db->prepare($sql);
         $query->bindParam('reg', $reg, PDO::PARAM_STR);
         $query->execute();
     }
 
+    /**
+     * Removes a permit from a vehicle.
+     * 
+     * @param string $reg The vehicle registration number.
+     */
     public function removePermit($reg)
     {
         $db = Database::getInstance();
 
-        $sql = "UPDATE `Vehicle` SET `HasPermit` = 0 WHERE `Reg` = :reg";
+        $sql = "UPDATE `Vehicle` SET `HasPermit` = 0 WHERE `Reg` = :reg LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam('reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+    }
+
+    /**
+     * Removes permit for all vehicles.
+     */
+    public function removePermitFromAllVehicles()
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Vehicle` SET `HasPermit` = 0";
         $query = $db->prepare($sql);
         $query->bindParam('reg', $reg, PDO::PARAM_STR);
         $query->execute();

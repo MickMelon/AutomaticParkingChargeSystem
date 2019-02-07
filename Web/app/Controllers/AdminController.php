@@ -7,6 +7,9 @@ use App\View;
 
 class AdminController
 {
+    /**
+     * The User Model for interacting with the database.
+     */
     private $userModel;
 
     /**

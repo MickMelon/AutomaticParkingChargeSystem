@@ -8,6 +8,10 @@ class UserModel
 {
     /**
      * Gets a user by their ID.
+     * 
+     * @param int $id The User ID.
+     * 
+     * @return object The User.
      */
     public function getUserById($id)
     {
@@ -23,6 +27,10 @@ class UserModel
 
     /**
      * Gets a user by their email address.
+     * 
+     * @param string $email The User's email address.
+     * 
+     * @return object The User.
      */
     public function getUserByEmail($email)
     {
@@ -39,6 +47,11 @@ class UserModel
     /**
      * Gets a user by their email and password, used for 
      * the login.
+     * 
+     * @param string $email The User's email address.
+     * @param string $password The User's plain-text password.
+     * 
+     * @return object The User.
      */
     public function getUserByEmailPassword($email, $password)
     {
@@ -52,6 +65,11 @@ class UserModel
 
     /**
      * Inserts a new user into the database.
+     * 
+     * @param string $firstName The User's first name.
+     * @param string $lastName The User's last name.
+     * @param string $email The User's email address.
+     * @param string $password The User's password in plain-text.
      */
     public function createUser($firstName, $lastName, $email, $password)
     {
@@ -69,6 +87,14 @@ class UserModel
         $query->execute();
     }
 
+    /**
+     * Updates a user.
+     * 
+     * @param string $firstName The User's first name.
+     * @param string $lastName The User's last name.
+     * @param string $email The User's email address.
+     * @param string $password The User's password in plain-text.
+     */
     public function updateUser($id, $firstName, $lastName, $password)
     {
         $hash = password_hash($password, PASSWORD_BCRYPT);

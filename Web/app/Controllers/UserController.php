@@ -8,6 +8,9 @@ use App\Util;
 
 class UserController 
 {
+    /**
+     * The User Model for interacting with the database.
+     */
     private $userModel;
 
     /**
@@ -18,6 +21,9 @@ class UserController
         $this->userModel = new UserModel();
     }
 
+    /**
+     * Shows the user details page.
+     */
     public function show()
     {
         if (!AuthHelper::isLoggedIn())
@@ -32,6 +38,9 @@ class UserController
         $view->render();
     }
 
+    /**
+     * Shows the update user details page.
+     */
     public function update()
     {
         if (!AuthHelper::isLoggedIn())
@@ -46,6 +55,9 @@ class UserController
         $view->render();
     }
 
+    /**
+     * Called when the update user form has been submitted.
+     */
     public function submitUpdate()
     {
         if (!AuthHelper::isLoggedIn()
