@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\View" namespace="App" name="View" abstract="false" final="false" start="10" end="96">
+  <file path="/home/michael/public_html/apcs/Web/app" file="View.php" realpath="/home/michael/public_html/apcs/Web/app/View.php" size="2254" time="2019-02-07T20:19:13+00:00" unixtime="1549570753" sha1="cb7539243b8d6a736d6690ad425784d72f9b750a" relative="View.php"/>
+  <docblock>
+    <description compact="Contains all the functions for setting up and rendering views."/>
+  </docblock>
+  <constant type="string" name="HEADER_FILE" value="'app/Views/Templates/header.php'">
+    <docblock>
+      <description compact="The path to the header file."/>
+    </docblock>
+  </constant>
+  <constant type="string" name="FOOTER_FILE" value="'app/Views/Templates/footer.php'">
+    <docblock>
+      <description compact="The path to the footer file."/>
+    </docblock>
+  </constant>
+  <member name="data" default="" type="array" visibility="private" static="false" line="25">
+    <docblock>
+      <description compact="The variables used on the view page."/>
+    </docblock>
+  </member>
+  <member name="file" default="false" type="boolean" visibility="private" static="false" line="30">
+    <docblock>
+      <description compact="The file location of the view page to be displayed (located in app/Views)"/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="39" end="47" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new view from the specified template name."/>
+      <param description="The template name (e.g. Articles/index)" type="string" variable="$template"/>
+      <return type="object">
+        <type full="App\View" namespace="App" name="View"/>
+      </return>
+    </docblock>
+    <parameter name="template" byreference="false" type="{unknown}"/>
+  </constructor>
+  <method name="assign" start="64" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Add the variables that need to be displayed on the view.">Example use:
+$value = 'Number 21'
+$view-&gt;assign('name', $value);
+
+So in the view, you use the variable like $name to access the value set
+in $value.</description>
+      <param description="The desired name of the variable." type="string" variable="$variable"/>
+      <param description="The value of the variable to be used." type="object" variable="$value"/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="variable" byreference="false" type="{unknown}"/>
+    <parameter name="value" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="render" start="74" end="82" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Display the view with the header and footer."/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="assignDefaultVariables" start="90" end="95" abstract="false" final="false" static="false" visibility="private">
+    <docblock>
+      <description compact="Assigns the variables that will be used commonly amongst the different views."/>
+      <return type="object">
+        <type full="App\void" namespace="App" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

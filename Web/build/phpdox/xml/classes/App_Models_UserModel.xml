@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Models\UserModel" namespace="App\Models" name="UserModel" abstract="false" final="false" start="10" end="123">
+  <file path="/home/michael/public_html/apcs/Web/app/Models" file="UserModel.php" realpath="/home/michael/public_html/apcs/Web/app/Models/UserModel.php" size="3554" time="2019-02-07T20:09:15+00:00" unixtime="1549570155" sha1="52b945937ed408ec0c3d0b4fc8d2c2fa52401a08" relative="Models/UserModel.php"/>
+  <docblock>
+    <description compact="Used for interacting with the User table in the database."/>
+  </docblock>
+  <method name="getUserById" start="19" end="29" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets a user by their ID."/>
+      <param description="The User ID." type="int" variable="$id"/>
+      <return description="The User." type="object"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getUserByEmail" start="38" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets a user by their email address."/>
+      <param description="The User's email address." type="string" variable="$email"/>
+      <return description="The User." type="object"/>
+    </docblock>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getUserByEmailPassword" start="59" end="67" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets a user by their email and password, used for the login."/>
+      <param description="The User's email address." type="string" variable="$email"/>
+      <param description="The User's plain-text password." type="string" variable="$password"/>
+      <return description="The User." type="object"/>
+    </docblock>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createUser" start="79" end="93" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Inserts a new user into the database."/>
+      <param description="The User's first name." type="string" variable="$firstName"/>
+      <param description="The User's last name." type="string" variable="$lastName"/>
+      <param description="The User's email address." type="string" variable="$email"/>
+      <param description="The User's password in plain-text." type="string" variable="$password"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="firstName" byreference="false" type="{unknown}"/>
+    <parameter name="lastName" byreference="false" type="{unknown}"/>
+    <parameter name="email" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateUser" start="105" end="122" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Updates a user."/>
+      <param description="The User's first name." type="string" variable="$firstName"/>
+      <param description="The User's last name." type="string" variable="$lastName"/>
+      <param description="The User's email address." type="string" variable="$email"/>
+      <param description="The User's password in plain-text." type="string" variable="$password"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="firstName" byreference="false" type="{unknown}"/>
+    <parameter name="lastName" byreference="false" type="{unknown}"/>
+    <parameter name="password" byreference="false" type="{unknown}"/>
+  </method>
+</class>

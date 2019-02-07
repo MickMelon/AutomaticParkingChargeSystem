@@ -3,6 +3,9 @@ namespace App;
 
 use PDO;
 
+/**
+ * Used to make a connection and send queries to the database.
+ */
 class Database
 {
     /**
@@ -20,6 +23,8 @@ class Database
     /**
      * Returns the singleton database instance. If there is none, 
      * it will create it.
+     * 
+     * @return Database
      */
     public static function getInstance()
     {
@@ -31,6 +36,8 @@ class Database
 
     /**
      * Configure and set the singleton database instance.
+     * 
+     * @return void
      */
     private static function setInstance()
     {

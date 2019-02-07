@@ -4,6 +4,9 @@ namespace App\Models;
 use App\Database;
 use PDO;
 
+/**
+ * Used for interacting with the Carpark table in the database.
+ */
 class CarparkModel
 {
     /**
@@ -47,6 +50,8 @@ class CarparkModel
      * @param int $id The car park ID.
      * @param string $name The new car park name.
      * @param double $price The new car park price.
+     * 
+     * @return void
      */
     public function updateCarpark($id, $name, $price)
     {

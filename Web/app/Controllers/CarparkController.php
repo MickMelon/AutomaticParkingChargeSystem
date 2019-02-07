@@ -5,6 +5,9 @@ use App\Models\CarparkModel;
 use App\Helpers\AuthHelper;
 use App\View;
 
+/**
+ * Used for car park pages and actions.
+ */
 class CarparkController
 {
     /**
@@ -22,6 +25,8 @@ class CarparkController
 
     /**
      * Shows the car parks page.
+     * 
+     * @return void
      */
     public function index()
     {
@@ -38,6 +43,8 @@ class CarparkController
 
     /**
      * Shows the update car park page.
+     * 
+     * @return void
      */
     public function update()
     {
@@ -55,6 +62,8 @@ class CarparkController
 
     /**
      * Called when the update car park form has been submitted.
+     * 
+     * @return void
      */
     public function submitUpdate()
     {

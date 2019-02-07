@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Controllers\CarparkController" namespace="App\Controllers" name="CarparkController" abstract="false" final="false" start="11" end="80">
+  <file path="/home/michael/public_html/apcs/Web/app/Controllers" file="CarparkController.php" realpath="/home/michael/public_html/apcs/Web/app/Controllers/CarparkController.php" size="1872" time="2019-02-07T20:20:00+00:00" unixtime="1549570800" sha1="b0c0b562358faa4652ba323d499da039d4a06020" relative="Controllers/CarparkController.php"/>
+  <docblock>
+    <description compact="Used for car park pages and actions."/>
+  </docblock>
+  <member name="carparkModel" visibility="private" static="false" line="16">
+    <docblock>
+      <description compact="The Carpark Model for interacting with the database."/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="21" end="24" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new CarparkController object."/>
+    </docblock>
+  </constructor>
+  <method name="index" start="31" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Shows the car parks page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="update" start="49" end="61" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Shows the update car park page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="submitUpdate" start="68" end="79" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Called when the update car park form has been submitted."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Models\CarparkModel" namespace="App\Models" name="CarparkModel" abstract="false" final="false" start="10" end="71">
+  <file path="/home/michael/public_html/apcs/Web/app/Models" file="CarparkModel.php" realpath="/home/michael/public_html/apcs/Web/app/Models/CarparkModel.php" size="1675" time="2019-02-07T20:08:48+00:00" unixtime="1549570128" sha1="dbbf95cc1e6b9e634874cda7d8e9d246f9133f76" relative="Models/CarparkModel.php"/>
+  <docblock>
+    <description compact="Used for interacting with the Carpark table in the database."/>
+  </docblock>
+  <method name="getAllCarparks" start="17" end="26" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets all the car parks in the database."/>
+      <return description="All the car parks." type="array"/>
+    </docblock>
+  </method>
+  <method name="getCarparkById" start="35" end="45" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets a car park by its ID."/>
+      <param description="The car park ID." type="int" variable="$id"/>
+      <return description="The car park or null if not found." type="object"/>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="updateCarpark" start="56" end="70" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Updates a car park."/>
+      <param description="The car park ID." type="int" variable="$id"/>
+      <param description="The new car park name." type="string" variable="$name"/>
+      <param description="The new car park price." type="object" variable="$price">
+        <type full="App\Models\double" namespace="App\Models" name="double"/>
+      </param>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="id" byreference="false" type="{unknown}"/>
+    <parameter name="name" byreference="false" type="{unknown}"/>
+    <parameter name="price" byreference="false" type="{unknown}"/>
+  </method>
+</class>

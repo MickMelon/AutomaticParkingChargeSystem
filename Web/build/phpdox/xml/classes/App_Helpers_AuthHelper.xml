@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Helpers\AuthHelper" namespace="App\Helpers" name="AuthHelper" abstract="false" final="false" start="9" end="35">
+  <file path="/home/michael/public_html/apcs/Web/app/Helpers" file="AuthHelper.php" realpath="/home/michael/public_html/apcs/Web/app/Helpers/AuthHelper.php" size="732" time="2019-02-07T20:10:31+00:00" unixtime="1549570231" sha1="7e2363bac5e629c42defabf53f48008736980629" relative="Helpers/AuthHelper.php"/>
+  <docblock>
+    <description compact="Contains Helper methods for authentication purposes."/>
+  </docblock>
+  <method name="isLoggedIn" start="16" end="19" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Checks if the user is logged in."/>
+      <return description="Whether the user is logged in." type="object">
+        <type full="App\Helpers\bool" namespace="App\Helpers" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="isAdmin" start="26" end="34" abstract="false" final="false" static="true" visibility="public">
+    <docblock>
+      <description compact="Checks if the user is an admin."/>
+      <return description="Whether the user is an admin." type="object">
+        <type full="App\Helpers\bool" namespace="App\Helpers" name="bool"/>
+      </return>
+    </docblock>
+  </method>
+</class>

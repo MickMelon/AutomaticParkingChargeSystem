@@ -5,6 +5,9 @@ use App\Models\UserModel;
 use App\Helpers\AuthHelper;
 use App\View;
 
+/**
+ * Used for registration actions.
+ */
 class RegisterController 
 {
     /**
@@ -24,6 +27,8 @@ class RegisterController
      * Show the register index page and errors if applicable.
      * 
      * @param array $errors Any errors to be displayed.
+     * 
+     * @return void
      */
     public function index($errors = null)
     {
@@ -38,6 +43,8 @@ class RegisterController
 
     /**
      * Show the register page.
+     * 
+     * @return void
      */
     public function register()
     {
@@ -68,6 +75,8 @@ class RegisterController
 
     /**
      * Show the success page.
+     * 
+     * @return void
      */
     public function success()
     {

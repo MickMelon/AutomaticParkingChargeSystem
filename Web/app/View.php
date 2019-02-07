@@ -4,6 +4,9 @@ namespace App;
 use App\Config;
 use App\Helpers\AuthHelper;
 
+/**
+ * Contains all the functions for setting up and rendering views.
+ */
 class View
 {
     /**
@@ -30,6 +33,8 @@ class View
      * Create a new view from the specified template name.
      * 
      * @param string $template The template name (e.g. Articles/index)
+     * 
+     * @return View
      */
     public function __construct($template)
     {
@@ -53,6 +58,8 @@ class View
      * 
      * @param string $variable The desired name of the variable.
      * @param object $value The value of the variable to be used.
+     * 
+     * @return void
      */
     public function assign($variable, $value)
     {
@@ -61,6 +68,8 @@ class View
 
     /**
      * Display the view with the header and footer.
+     * 
+     * @return void
      */
     public function render()
     {
@@ -75,6 +84,8 @@ class View
     /**
      * Assigns the variables that will be used commonly amongst
      * the different views.
+     * 
+     * @return void
      */
     private function assignDefaultVariables()
     {

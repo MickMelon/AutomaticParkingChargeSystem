@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Vehicle" file="purchase_permit.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Vehicle/purchase_permit.php" size="538" time="2019-02-01T19:27:23+00:00" unixtime="1549049243" sha1="d283b62e7a18c1884689017789e107bed1b7e195" relative="Views/Vehicle/purchase_permit.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">&lt;form action="index.php?controller=vehicle&amp;action=submitpermitpayment" method="POST"&gt;</token>
+  </line>
+  <line no="2">
+    <token name="T_INLINE_HTML">  &lt;script</token>
+  </line>
+  <line no="3">
+    <token name="T_INLINE_HTML">    src="https://checkout.stripe.com/checkout.js" class="stripe-button"</token>
+  </line>
+  <line no="4">
+    <token name="T_INLINE_HTML">    data-key="</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$publicKey</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">"</token>
+  </line>
+  <line no="5">
+    <token name="T_INLINE_HTML">    data-amount="</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$amount</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">"</token>
+  </line>
+  <line no="6">
+    <token name="T_INLINE_HTML">    data-name="Smart Parking Ltd."</token>
+  </line>
+  <line no="7">
+    <token name="T_INLINE_HTML">    data-description="Purchase a season permit for your vehicle."</token>
+  </line>
+  <line no="8">
+    <token name="T_INLINE_HTML">    data-image="https://stripe.com/img/documentation/checkout/marketplace.png"</token>
+  </line>
+  <line no="9">
+    <token name="T_INLINE_HTML">    data-locale="auto"</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">    data-currency="gbp"&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">  &lt;/script&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">  &lt;input type="hidden" name="reg" value="</token>
+    <token name="T_OPEN_TAG_WITH_ECHO">&lt;?=</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$reg</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CLOSE_TAG">?&gt;</token>
+    <token name="T_INLINE_HTML">" /&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">&lt;/form&gt;</token>
+  </line>
+</source>

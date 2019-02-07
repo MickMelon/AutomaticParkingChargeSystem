@@ -1,6 +1,9 @@
 <?php
 namespace App;
 
+/**
+ * Stores all the global configuration settings for the app.
+ */
 class Config
 {
     /**

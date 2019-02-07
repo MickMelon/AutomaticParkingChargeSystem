@@ -6,6 +6,9 @@ use App\Helpers\AuthHelper;
 use App\View;
 use App\Util;
 
+/**
+ * Used for all the login functionality.
+ */
 class LoginController 
 {
     /**
@@ -23,6 +26,10 @@ class LoginController
 
     /**
      * Shows the index page with errors if applicable.
+     * 
+     * @param array $errors Errors if applicable.
+     * 
+     * @return void
      */
     public function index($errors = null)
     {
@@ -37,6 +44,8 @@ class LoginController
 
     /**
      * Processes a login request.
+     * 
+     * @return void
      */
     public function login()
     {
@@ -63,6 +72,8 @@ class LoginController
 
     /**
      * Processes a logout request.
+     * 
+     * @return void
      */
     public function logout()
     {
@@ -78,6 +89,8 @@ class LoginController
 
     /**
      * Shows the login success page.
+     * 
+     * @return void
      */
     public function success()
     {
@@ -89,6 +102,11 @@ class LoginController
     /**
      * Check whether the username and password match an 
      * account.
+     * 
+     * @param string $email The email address.
+     * @param string $password The plain-text password.
+     * 
+     * @return void
      */
     private function authenticate($email, $password)
     {

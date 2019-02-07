@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Pages" file="error.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Pages/error.php" size="13" time="2019-02-01T12:14:31+00:00" unixtime="1549023271" sha1="92384d24537cae0c0557e67accccc9bd5a171529" relative="Views/Pages/error.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">What teh fuck</token>
+  </line>
+</source>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Login" file="success.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Login/success.php" size="34" time="2019-02-01T12:14:31+00:00" unixtime="1549023271" sha1="4a63abfcc78480d11a78fb56a0785119aa59989c" relative="Views/Login/success.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">&lt;p&gt;You logged in successfully.&lt;/p&gt;</token>
+  </line>
+</source>

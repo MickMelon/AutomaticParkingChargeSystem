@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Register" file="index.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Register/index.php" size="1049" time="2019-02-03T19:51:12+00:00" unixtime="1549223472" sha1="31846198f0b17122e5a03438000a4683582f55fa" relative="Views/Register/index.php"/>
+  <line no="1">
+    <token name="T_OPEN_TAG">&lt;?php </token>
+  </line>
+  <line no="2">
+    <token name="T_IF">if</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_ISSET">isset</token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$errors</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+    <token name="T_WHITESPACE"> </token>
+  </line>
+  <line no="3">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_FOREACH">foreach</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_BRACKET">(</token>
+    <token name="T_VARIABLE">$errors</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_AS">as</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$error</token>
+    <token name="T_PHPDOX_CLOSE_BRACKET">)</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_OPEN_CURLY">{</token>
+  </line>
+  <line no="4">
+    <token name="T_WHITESPACE">        </token>
+    <token name="T_ECHO">echo</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&lt;p style="color:red;"&gt;'</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_VARIABLE">$error</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_PHPDOX_DOT">.</token>
+    <token name="T_WHITESPACE"> </token>
+    <token name="T_CONSTANT_ENCAPSED_STRING">'&lt;/p&gt;'</token>
+    <token name="T_PHPDOX_SEMICOLON">;</token>
+  </line>
+  <line no="5">
+    <token name="T_WHITESPACE">    </token>
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+    <token name="T_WHITESPACE"> </token>
+  </line>
+  <line no="6">
+    <token name="T_PHPDOX_CLOSE_CURLY">}</token>
+    <token name="T_WHITESPACE"> </token>
+  </line>
+  <line no="7">
+    <token name="T_CLOSE_TAG">?&gt;</token>
+  </line>
+  <line no="8">
+    <token name="T_INLINE_HTML">&lt;form action="index.php?controller=register&amp;action=register" method="post" onsubmit="return checkForm()"&gt;</token>
+  </line>
+  <line no="9">
+    <token name="T_INLINE_HTML">    First Name: &lt;input type="text" name="firstName" maxlength="16" required&gt;&lt;br /&gt;</token>
+  </line>
+  <line no="10">
+    <token name="T_INLINE_HTML">    Last Name: &lt;input type="text" name="lastName" maxlength="16" required&gt;&lt;br /&gt;</token>
+  </line>
+  <line no="11">
+    <token name="T_INLINE_HTML">    Email: &lt;input type="email" name="email" maxlength="128" required&gt;&lt;br /&gt;</token>
+  </line>
+  <line no="12">
+    <token name="T_INLINE_HTML">    Password: &lt;input type="password" name="password" id="password" minlength="6" required&gt;&lt;br /&gt;</token>
+  </line>
+  <line no="13">
+    <token name="T_INLINE_HTML">    Confirm Password: &lt;input type="password" name="confirmPassword" id="confirmPassword" minlength="6" required&gt;&lt;br /&gt;</token>
+  </line>
+  <line no="14"/>
+  <line no="15">
+    <token name="T_INLINE_HTML">    &lt;input type="submit" value="Register" /&gt;</token>
+  </line>
+  <line no="16">
+    <token name="T_INLINE_HTML">&lt;/form&gt;</token>
+  </line>
+  <line no="17"/>
+  <line no="18">
+    <token name="T_INLINE_HTML">&lt;script&gt;</token>
+  </line>
+  <line no="19">
+    <token name="T_INLINE_HTML">function checkForm() {</token>
+  </line>
+  <line no="20">
+    <token name="T_INLINE_HTML">    var password = document.getElementById("password").value;</token>
+  </line>
+  <line no="21">
+    <token name="T_INLINE_HTML">    var confirmPassword = document.getElementById("confirmPassword").value;</token>
+  </line>
+  <line no="22"/>
+  <line no="23">
+    <token name="T_INLINE_HTML">    if (password === confirmPassword) return true;</token>
+  </line>
+  <line no="24"/>
+  <line no="25">
+    <token name="T_INLINE_HTML">    alert("Entered passwords do not match.");</token>
+  </line>
+  <line no="26">
+    <token name="T_INLINE_HTML">    return false;</token>
+  </line>
+  <line no="27">
+    <token name="T_INLINE_HTML">}</token>
+  </line>
+  <line no="28">
+    <token name="T_INLINE_HTML">&lt;/script&gt;</token>
+  </line>
+</source>

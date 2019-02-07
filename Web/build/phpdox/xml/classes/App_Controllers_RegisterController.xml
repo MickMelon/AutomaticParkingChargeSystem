@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Controllers\RegisterController" namespace="App\Controllers" name="RegisterController" abstract="false" final="false" start="11" end="87">
+  <file path="/home/michael/public_html/apcs/Web/app/Controllers" file="RegisterController.php" realpath="/home/michael/public_html/apcs/Web/app/Controllers/RegisterController.php" size="2223" time="2019-02-07T20:19:47+00:00" unixtime="1549570787" sha1="7aeeab957cfc53424b291d6ad636a07546035e99" relative="Controllers/RegisterController.php"/>
+  <docblock>
+    <description compact="Used for registration actions."/>
+  </docblock>
+  <member name="userModel" visibility="private" static="false" line="16">
+    <docblock>
+      <description compact="The User Model for interacting with the database."/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="21" end="24" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Create a new RegisterController object."/>
+    </docblock>
+  </constructor>
+  <method name="index" start="33" end="42" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the register index page and errors if applicable."/>
+      <param description="Any errors to be displayed." type="array" variable="$errors"/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="errors" byreference="false" type="{unknown}" default="NULL"/>
+  </method>
+  <method name="register" start="49" end="74" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the register page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="success" start="81" end="86" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Show the success page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

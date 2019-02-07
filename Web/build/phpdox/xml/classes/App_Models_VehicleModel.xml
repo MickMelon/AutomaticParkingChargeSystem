@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Models\VehicleModel" namespace="App\Models" name="VehicleModel" abstract="false" final="false" start="10" end="135">
+  <file path="/home/michael/public_html/apcs/Web/app/Models" file="VehicleModel.php" realpath="/home/michael/public_html/apcs/Web/app/Models/VehicleModel.php" size="3351" time="2019-02-07T20:09:52+00:00" unixtime="1549570192" sha1="4c00b501f659cfb518e7ad592fd41b8d67d16fa3" relative="Models/VehicleModel.php"/>
+  <docblock>
+    <description compact="Used for interacting with the Vehicle table in the database."/>
+  </docblock>
+  <method name="getVehicle" start="19" end="29" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets a vehicle by the reg."/>
+      <param description="The vehicle registration number." type="string" variable="$reg"/>
+      <return description="The Vehicle." type="object"/>
+    </docblock>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="getAllVehiclesForUser" start="38" end="48" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Gets all vehicles for a user"/>
+      <param description="The User ID." type="int" variable="$userId"/>
+      <return description="All the user's vehicles as an array." type="object"/>
+    </docblock>
+    <parameter name="userId" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="createVehicle" start="58" end="68" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new vehicle."/>
+      <param description="The vehicle registration number." type="string" variable="$reg"/>
+      <param description="The User ID." type="int" variable="$userId"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+    <parameter name="userId" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="deleteVehicle" start="77" end="85" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Permanently deletes a vehicle."/>
+      <param description="The vehicle registration number." type="string" variable="$reg"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="addPermit" start="94" end="102" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Adds a permit to a vehicle."/>
+      <param description="The vehicle registration number." type="string" variable="$reg"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removePermit" start="111" end="119" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes a permit from a vehicle."/>
+      <param description="The vehicle registration number." type="string" variable="$reg"/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+    <parameter name="reg" byreference="false" type="{unknown}"/>
+  </method>
+  <method name="removePermitFromAllVehicles" start="126" end="134" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Removes permit for all vehicles."/>
+      <return type="object">
+        <type full="App\Models\void" namespace="App\Models" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

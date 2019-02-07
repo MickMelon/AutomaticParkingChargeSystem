@@ -6,6 +6,9 @@ use App\Helpers\AuthHelper;
 use App\View;
 use App\Util;
 
+/**
+ * Used for the user details page.
+ */
 class UserController 
 {
     /**
@@ -23,6 +26,8 @@ class UserController
 
     /**
      * Shows the user details page.
+     * 
+     * @return void
      */
     public function show()
     {
@@ -40,6 +45,8 @@ class UserController
 
     /**
      * Shows the update user details page.
+     * 
+     * @return void
      */
     public function update()
     {
@@ -57,6 +64,8 @@ class UserController
 
     /**
      * Called when the update user form has been submitted.
+     * 
+     * @return void
      */
     public function submitUpdate()
     {

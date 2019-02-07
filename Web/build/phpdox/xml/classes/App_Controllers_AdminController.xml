@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Controllers\AdminController" namespace="App\Controllers" name="AdminController" abstract="false" final="false" start="11" end="40">
+  <file path="/home/michael/public_html/apcs/Web/app/Controllers" file="AdminController.php" realpath="/home/michael/public_html/apcs/Web/app/Controllers/AdminController.php" size="745" time="2019-02-07T20:20:05+00:00" unixtime="1549570805" sha1="6b6818c7198ff3bc4196af4bfee22edb773c686a" relative="Controllers/AdminController.php"/>
+  <docblock>
+    <description compact="Used for controlling admin actions."/>
+  </docblock>
+  <member name="userModel" visibility="private" static="false" line="16">
+    <docblock>
+      <description compact="The User Model for interacting with the database."/>
+    </docblock>
+  </member>
+  <constructor name="__construct" start="21" end="24" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Creates a new AdminController object."/>
+    </docblock>
+  </constructor>
+  <method name="index" start="31" end="39" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Shows the admin panel."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

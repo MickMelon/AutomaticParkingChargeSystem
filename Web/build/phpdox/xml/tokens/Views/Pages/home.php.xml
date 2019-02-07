@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Pages" file="home.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Pages/home.php" size="29" time="2019-02-01T12:14:31+00:00" unixtime="1549023271" sha1="45a600cc41eae280b1a85596aa9bf281c0bb28cd" relative="Views/Pages/home.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">&lt;p&gt;This is the home page.&lt;/p&gt;</token>
+  </line>
+</source>

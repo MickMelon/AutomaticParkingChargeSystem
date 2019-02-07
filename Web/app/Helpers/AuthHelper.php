@@ -3,6 +3,9 @@ namespace App\Helpers;
 
 use App\Models\UserModel;
 
+/**
+ * Contains Helper methods for authentication purposes.
+ */
 class AuthHelper 
 {
     /**

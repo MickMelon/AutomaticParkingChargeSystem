@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Register" file="success.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Register/success.php" size="101" time="2019-02-01T12:14:31+00:00" unixtime="1549023271" sha1="62f5b050ae9876eb195710b8e3a2ebd15d1c8fd8" relative="Views/Register/success.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">You registered successfully. You can now &lt;a href="index.php?controller=login&amp;action=index"&gt;login&lt;/a&gt;.</token>
+  </line>
+</source>

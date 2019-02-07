@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://xml.phpdox.net/src" basedir="/home/michael/public_html/apcs/Web/app">
+  <namespace name="App">
+    
+    
+    
+  <class name="Config" src="Config.php" description="Stores all the global configuration settings for the app." xml="classes/App_Config.xml"/><class name="Database" src="Database.php" description="Used to make a connection and send queries to the database." xml="classes/App_Database.xml"/><class name="View" src="View.php" description="Contains all the functions for setting up and rendering views." xml="classes/App_View.xml"/></namespace>
+  <namespace name="App\Helpers">
+    
+  <class name="AuthHelper" src="Helpers/AuthHelper.php" description="Contains Helper methods for authentication purposes." xml="classes/App_Helpers_AuthHelper.xml"/></namespace>
+  <namespace name="App\Controllers">
+    
+    
+    
+    
+    
+    
+    
+  <class name="PageController" src="Controllers/PageController.php" description="Used for displaying basic pages that don't quite fit in other controllers." xml="classes/App_Controllers_PageController.xml"/><class name="UserController" src="Controllers/UserController.php" description="Used for the user details page." xml="classes/App_Controllers_UserController.xml"/><class name="AdminController" src="Controllers/AdminController.php" description="Used for controlling admin actions." xml="classes/App_Controllers_AdminController.xml"/><class name="VehicleController" src="Controllers/VehicleController.php" description="Used for all the vehicle actions." xml="classes/App_Controllers_VehicleController.xml"/><class name="LoginController" src="Controllers/LoginController.php" description="Used for all the login functionality." xml="classes/App_Controllers_LoginController.xml"/><class name="RegisterController" src="Controllers/RegisterController.php" description="Used for registration actions." xml="classes/App_Controllers_RegisterController.xml"/><class name="CarparkController" src="Controllers/CarparkController.php" description="Used for car park pages and actions." xml="classes/App_Controllers_CarparkController.xml"/></namespace>
+  <namespace name="App\Controllers\Results">
+    
+  </namespace>
+  <namespace name="App\Models">
+    
+    
+    
+  <class name="CarparkModel" src="Models/CarparkModel.php" description="Used for interacting with the Carpark table in the database." xml="classes/App_Models_CarparkModel.xml"/><class name="VehicleModel" src="Models/VehicleModel.php" description="Used for interacting with the Vehicle table in the database." xml="classes/App_Models_VehicleModel.xml"/><class name="UserModel" src="Models/UserModel.php" description="Used for interacting with the User table in the database." xml="classes/App_Models_UserModel.xml"/></namespace>
+</index>

@@ -4,6 +4,9 @@ namespace App\Models;
 use App\Database;
 use PDO;
 
+/**
+ * Used for interacting with the Vehicle table in the database.
+ */
 class VehicleModel 
 {
     /**
@@ -49,6 +52,8 @@ class VehicleModel
      * 
      * @param string $reg The vehicle registration number.
      * @param int $userId The User ID.
+     * 
+     * @return void
      */
     public function createVehicle($reg, $userId)
     {
@@ -66,6 +71,8 @@ class VehicleModel
      * Permanently deletes a vehicle.
      * 
      * @param string $reg The vehicle registration number.
+     * 
+     * @return void
      */
     public function deleteVehicle($reg)
     {
@@ -81,6 +88,8 @@ class VehicleModel
      * Adds a permit to a vehicle.
      * 
      * @param string $reg The vehicle registration number.
+     * 
+     * @return void
      */
     public function addPermit($reg)
     {
@@ -96,6 +105,8 @@ class VehicleModel
      * Removes a permit from a vehicle.
      * 
      * @param string $reg The vehicle registration number.
+     * 
+     * @return void
      */
     public function removePermit($reg)
     {
@@ -109,6 +120,8 @@ class VehicleModel
 
     /**
      * Removes permit for all vehicles.
+     * 
+     * @return void
      */
     public function removePermitFromAllVehicles()
     {

@@ -3,10 +3,15 @@ namespace App\Controllers;
 
 use App\View;
 
+/**
+ * Used for displaying basic pages that don't quite fit in other controllers.
+ */
 class PageController
 {
     /**
      * Displays the home page.
+     * 
+     * @return void
      */
     public function home()
     {
@@ -17,6 +22,8 @@ class PageController
 
     /**
      * Displays the error page.
+     * 
+     * @return void
      */
     public function error()
     {

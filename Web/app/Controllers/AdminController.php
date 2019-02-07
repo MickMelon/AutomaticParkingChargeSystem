@@ -5,6 +5,9 @@ use App\Models\UserModel;
 use App\Helpers\AuthHelper;
 use App\View;
 
+/**
+ * Used for controlling admin actions.
+ */
 class AdminController
 {
     /**
@@ -22,6 +25,8 @@ class AdminController
 
     /**
      * Shows the admin panel.
+     * 
+     * @return void
      */
     public function index()
     {

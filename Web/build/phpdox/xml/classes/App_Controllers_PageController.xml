@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Controllers\PageController" namespace="App\Controllers" name="PageController" abstract="false" final="false" start="9" end="33">
+  <file path="/home/michael/public_html/apcs/Web/app/Controllers" file="PageController.php" realpath="/home/michael/public_html/apcs/Web/app/Controllers/PageController.php" size="566" time="2019-02-07T20:14:04+00:00" unixtime="1549570444" sha1="c7ced99cca4531743dfa653f377aacaa29bba092" relative="Controllers/PageController.php"/>
+  <docblock>
+    <description compact="Used for displaying basic pages that don't quite fit in other controllers."/>
+  </docblock>
+  <method name="home" start="16" end="21" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Displays the home page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+  <method name="error" start="28" end="32" abstract="false" final="false" static="false" visibility="public">
+    <docblock>
+      <description compact="Displays the error page."/>
+      <return type="object">
+        <type full="App\Controllers\void" namespace="App\Controllers" name="void"/>
+      </return>
+    </docblock>
+  </method>
+</class>

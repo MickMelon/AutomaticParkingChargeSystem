@@ -6,6 +6,9 @@ use App\Helpers\AuthHelper;
 use App\Config;
 use App\View;
 
+/**
+ * Used for all the vehicle actions.
+ */
 class VehicleController 
 {
     /**
@@ -25,6 +28,8 @@ class VehicleController
      * Show the vehicles index page.
      * 
      * @param array $errors Any errors to be displayed.
+     * 
+     * @return void
      */
     public function index($errors = null)
     {
@@ -42,6 +47,8 @@ class VehicleController
 
     /**
      * Add a new vehicle.
+     * 
+     * @return void
      */
     public function add()
     {
@@ -65,6 +72,8 @@ class VehicleController
 
     /** 
      * Remove a vehicle.
+     * 
+     * @return void
      */
     public function remove()
     {
@@ -87,6 +96,8 @@ class VehicleController
 
     /**
      * Called when the purchase permit button has been clicked for a vehicle.
+     * 
+     * @return void
      */
     public function purchasePermit()
     {
@@ -121,6 +132,8 @@ class VehicleController
 
     /**
      * Called when a payment has been made successfully.
+     * 
+     * @return void
      */
     public function submitPermitPayment()
     {

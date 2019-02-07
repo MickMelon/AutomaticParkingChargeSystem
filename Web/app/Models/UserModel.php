@@ -4,6 +4,9 @@ namespace App\Models;
 use App\Database;
 use PDO;
 
+/**
+ * Used for interacting with the User table in the database.
+ */
 class UserModel 
 {
     /**
@@ -70,6 +73,8 @@ class UserModel
      * @param string $lastName The User's last name.
      * @param string $email The User's email address.
      * @param string $password The User's password in plain-text.
+     * 
+     * @return void
      */
     public function createUser($firstName, $lastName, $email, $password)
     {
@@ -94,6 +99,8 @@ class UserModel
      * @param string $lastName The User's last name.
      * @param string $email The User's email address.
      * @param string $password The User's password in plain-text.
+     * 
+     * @return void
      */
     public function updateUser($id, $firstName, $lastName, $password)
     {

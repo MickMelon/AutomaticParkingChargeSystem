@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<source xmlns="http://xml.phpdox.net/token">
+  <file xmlns="http://xml.phpdox.net/src" path="/home/michael/public_html/apcs/Web/app/Views/Templates" file="footer.php" realpath="/home/michael/public_html/apcs/Web/app/Views/Templates/footer.php" size="77" time="2019-02-01T12:14:31+00:00" unixtime="1549023271" sha1="7314880ed5c04926be985be6f8f5ef359e6f7063" relative="Views/Templates/footer.php"/>
+  <line no="1">
+    <token name="T_INLINE_HTML">    &lt;/main&gt;</token>
+  </line>
+  <line no="2"/>
+  <line no="3">
+    <token name="T_INLINE_HTML">    &lt;footer&gt;</token>
+  </line>
+  <line no="4">
+    <token name="T_INLINE_HTML">        &lt;p&gt;Footer&lt;/p&gt;</token>
+  </line>
+  <line no="5">
+    <token name="T_INLINE_HTML">    &lt;/footer&gt;</token>
+  </line>
+  <line no="6">
+    <token name="T_INLINE_HTML">&lt;/body&gt;</token>
+  </line>
+  <line no="7">
+    <token name="T_INLINE_HTML">&lt;/html&gt;</token>
+  </line>
+</source>

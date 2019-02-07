@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class xmlns="http://xml.phpdox.net/src" full="App\Config" namespace="App" name="Config" abstract="false" final="false" start="7" end="39">
+  <file path="/home/michael/public_html/apcs/Web/app" file="Config.php" realpath="/home/michael/public_html/apcs/Web/app/Config.php" size="850" time="2019-02-07T20:07:45+00:00" unixtime="1549570065" sha1="3820d9c5ca324234d949a6f132b668d3e7d68ea5" relative="Config.php"/>
+  <docblock>
+    <description compact="Stores all the global configuration settings for the app."/>
+  </docblock>
+  <constant type="string" name="DB_SERVER" value="'lochnagar.abertay.ac.uk'">
+    <docblock>
+      <description compact="Database connection details."/>
+    </docblock>
+  </constant>
+  <constant type="string" name="DB_NAME" value="'sql1800833'"/>
+  <constant type="string" name="DB_USER" value="'sql1800833'"/>
+  <constant type="string" name="DB_PASS" value="'rgcGZejkmcci'"/>
+  <constant type="boolean" name="DISPLAY_ERRORS" value="true">
+    <docblock>
+      <description compact="Whether to display errors."/>
+    </docblock>
+  </constant>
+  <constant type="string" name="SITE_TITLE" value="'APCS-Web'">
+    <docblock>
+      <description compact="The title of the site."/>
+    </docblock>
+  </constant>
+  <constant type="integer" name="PERMIT_PRICE_POUNDS" value="30">
+    <docblock>
+      <description compact="The price of the season permit in pounds."/>
+    </docblock>
+  </constant>
+  <constant type="string" name="STRIPE_SECRET_KEY" value="'sk_test_jPnPepQS0C4z8yWmjMgjT8P0'">
+    <docblock>
+      <description compact="Stripe API keys.">Stripe test cards: https://stripe.com/docs/testing
+Test Visa: 4242 4242 4242 4242</description>
+    </docblock>
+  </constant>
+  <constant type="string" name="STRIPE_PUBLIC_KEY" value="'pk_test_MQXGNKwdA9Rak9gcEkDkucTM'"/>
+</class>
