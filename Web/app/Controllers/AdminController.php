@@ -23,7 +23,7 @@ class AdminController
     public function index()
     {
         if (!AuthHelper::isAdmin())
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $view = new View('Admin/index');
         $view->assign('pageTitle', 'Admin Panel');

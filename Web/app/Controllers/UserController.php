@@ -20,58 +20,47 @@ class UserController
 
     public function show()
     {
-        if (AuthHelper::isLoggedIn())
-        {
-            $userId = $_SESSION['id'];
-            $user = $this->userModel->getUserById($userId);
+        if (!AuthHelper::isLoggedIn())
+            exit(header('Location: index.php'));
+        
+        $userId = $_SESSION['id'];
+        $user = $this->userModel->getUserById($userId);
 
-            $view = new View('User/show');
-            $view->assign('pageTitle', 'Your Details');
-            $view->assign('user', $user);
-            $view->render();
-        }
-        else
-            header('Location: index.php');
+        $view = new View('User/show');
+        $view->assign('pageTitle', 'Your Details');
+        $view->assign('user', $user);
+        $view->render();
     }
 
     public function update()
     {
-        if (AuthHelper::isLoggedIn())
-        {
-            $userId = $_SESSION['id'];
-            $user = $this->userModel->getUserById($userId);
+        if (!AuthHelper::isLoggedIn())
+            exit(header('Location: index.php'));
+        
+        $userId = $_SESSION['id'];
+        $user = $this->userModel->getUserById($userId);
 
-            $view = new View('User/update');
-            $view->assign('pageTitle', 'Update Your Details');
-            $view->assign('user', $user);
-            $view->render();
-        }
-        else
-            header('Location: index.php');
+        $view = new View('User/update');
+        $view->assign('pageTitle', 'Update Your Details');
+        $view->assign('user', $user);
+        $view->render();
     }
 
     public function submitUpdate()
     {
-        if (AuthHelper::isLoggedIn())
-        {
-            
-            if (isset($_POST['firstName']) &&
-                isset($_POST['lastName']) &&
-                isset($_POST['password']) &&
-                isset($_POST['userId']))
-            {
-                $firstName = $_POST['firstName'];
-                $lastName = $_POST['lastName'];
-                $password = $_POST['password'];
-                $userId = $_POST['userId'];
+        if (!AuthHelper::isLoggedIn()
+            || !isset($_POST['firstName'])
+            || !isset($_POST['lastName'])
+            || !isset($_POST['password'])
+            || !isset($_POST['userId']))
+            exit(header('Location: index.php'));
 
-                $this->userModel->updateUser($userId, $firstName, $lastName, $password);
-                header('Location: index.php?controller=user&action=show');
-            }
-            else
-                header('Location: index.php');
-        }
-        else
-            header('Location: index.php');
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $password = $_POST['password'];
+        $userId = $_POST['userId'];
+
+        $this->userModel->updateUser($userId, $firstName, $lastName, $password);
+        header('Location: index.php?controller=user&action=show');
     }
 }

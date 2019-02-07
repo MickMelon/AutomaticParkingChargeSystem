@@ -23,7 +23,7 @@ class CarparkController
     public function index()
     {
         if (!AuthHelper::isAdmin())
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $carparks = $this->carparkModel->getAllCarparks();
 
@@ -36,7 +36,7 @@ class CarparkController
     public function update()
     {
         if (!AuthHelper::isAdmin() || !isset($_GET['id']))
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $id = $_GET['id'];
         $carpark = $this->carparkModel->getCarparkById($id);
@@ -50,7 +50,7 @@ class CarparkController
     public function submitUpdate()
     {
         if (!AuthHelper::isAdmin() || !isset($_POST['carparkId']))
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $id = $_POST['carparkId'];
         $name = $_POST['name'];

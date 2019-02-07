@@ -24,7 +24,7 @@ class LoginController
     public function index($errors = null)
     {
         if (AuthHelper::isLoggedIn())
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $view = new View('Login/index');
         $view->assign('pageTitle', 'Login');
@@ -37,30 +37,25 @@ class LoginController
      */
     public function login()
     {
-        if (AuthHelper::isLoggedIn())
-            header('Location: index.php');
+        if (AuthHelper::isLoggedIn() || !isset($_POST['email']) || !isset($_POST['password']))
+            exit(header('Location: index.php'));
 
-        if (isset($_POST['email']) && isset($_POST['password']))
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $result = $this->authenticate($email, $password);
+
+        if ($result > 0)
         {
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $result = $this->authenticate($email, $password);
+            $_SESSION['id'] = $result;
+            $_SESSION['token'] = rand(100000, 999999);
 
-            if ($result > 0)
-            {
-                $_SESSION['id'] = $result;
-                $_SESSION['token'] = rand(100000, 999999);
-
-                header('Location: index.php?controller=login&action=success');
-            }
-            else 
-            {
-                $errors[] = 'Incorrect email address or password.';
-                $this->index($errors);
-            }
+            header('Location: index.php?controller=login&action=success');
         }
         else 
-            header('Location: index.php');
+        {
+            $errors[] = 'Incorrect email address or password.';
+            $this->index($errors);
+        }
     }
 
     /**
@@ -69,7 +64,7 @@ class LoginController
     public function logout()
     {
         if (!AuthHelper::isLoggedIn())
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $_SESSION = array();
         setcookie(session_name(), '', time() - 2592000, '/');

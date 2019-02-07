@@ -23,7 +23,7 @@ class RegisterController
     public function index($errors = null)
     {
         if (AuthHelper::isLoggedIn())
-            header('Location: index.php');
+            exit(header('Location: index.php'));
 
         $view = new View('Register/index');
         $view->assign('pageTitle', 'Register');
@@ -36,30 +36,29 @@ class RegisterController
      */
     public function register()
     {
-        if (isset($_POST['firstName']) 
-            AND isset($_POST['lastName'])
-            AND isset($_POST['email'])
-            AND isset($_POST['password']))
-        {
-            $firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
-            $lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
-            $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-            $password = $_POST['password'];
+        if (!AuthHelper::isLoggedIn()
+            || !isset($_POST['firstName']) 
+            || !isset($_POST['lastName'])
+            || !isset($_POST['email'])
+            || !isset($_POST['password']))
+            exit(header('Location: index.php'));
+            
+        $firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
+        $lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
+        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+        $password = $_POST['password'];
 
-            $existingUser = $this->userModel->getUserByEmail($email);
-            if ($existingUser != null)
-            {
-                $errors[] = 'An account with that email address already exists.';
-                $this->index($errors);
-            }
-            else 
-            {
-                $this->userModel->createUser($firstName, $lastName, $email, $password);
-                header('Location: index.php?controller=register&action=success');
-            }
+        $existingUser = $this->userModel->getUserByEmail($email);
+        if ($existingUser != null)
+        {
+            $errors[] = 'An account with that email address already exists.';
+            $this->index($errors);
         }
         else 
-            header('Location: index.php');
+        {
+            $this->userModel->createUser($firstName, $lastName, $email, $password);
+            header('Location: index.php?controller=register&action=success');
+        }
     }
 
     /**
