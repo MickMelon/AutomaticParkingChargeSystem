@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\CarparkModel;
+use App\Models\ParkingModel;
 use App\Helpers\AuthHelper;
 use App\View;
 
@@ -16,11 +17,17 @@ class CarparkController
     private $carparkModel;
 
     /**
+     * The Parking Model for interacting with the database.
+     */
+    private $parkingModel;
+
+    /**
      * Creates a new CarparkController object.
      */
     public function __construct()
     {
         $this->carparkModel = new CarparkModel();
+        $this->parkingModel = new ParkingModel();
     }
 
     /**
@@ -38,6 +45,27 @@ class CarparkController
         $view = new View('Carpark/index');
         $view->assign('pageTitle', 'Car Parks');
         $view->assign('carparks', $carparks);
+        $view->render();
+    }
+
+    /**
+     * Shows a single car park by its ID.
+     */
+    public function show()
+    {
+        if (!AuthHelper::isAdmin() || !isset($_GET['id']))
+            exit(header('Location: index.php'));
+            
+        $id = $_GET['id'];
+        $carpark = $this->carparkModel->getCarparkById($id);
+        $logs = $this->parkingModel->getAllForCarpark($id);
+
+        $view = new View('Carpark/show');
+        $view->assign('pageTitle', $carpark->Name);
+        $view->assign('id', $carpark->ID);
+        $view->assign('name', $carpark->Name);
+        $view->assign('price', $carpark->Price);
+        $view->assign('logs', $logs);
         $view->render();
     }
 
