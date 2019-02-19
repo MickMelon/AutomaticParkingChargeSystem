@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\ConfigModel;
 use App\Helpers\AuthHelper;
 use App\View;
 
@@ -14,6 +15,7 @@ class AdminController
      * The User Model for interacting with the database.
      */
     private $userModel;
+    private $configModel;
 
     /**
      * Creates a new AdminController object.
@@ -21,6 +23,7 @@ class AdminController
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->configModel = new ConfigModel();
     }
 
     /**
@@ -37,4 +40,18 @@ class AdminController
         $view->assign('pageTitle', 'Admin Panel');
         $view->render();
     }   
+
+    public function permits()
+    {
+        if (!AuthHelper::isAdmin())
+            exit(header('Location: index.php'));
+
+        $value = $this->configModel->getConfigValue(ConfigModel::PERMIT_PRICE);
+        $price = floatval($value);
+
+        $view = new View('Admin/permits');
+        $view->assign('pageTitle', 'Permits - Admin Panel');
+        $view->assign('price', $price);
+        $view->render();
+    }
 }
