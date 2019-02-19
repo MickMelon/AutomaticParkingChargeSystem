@@ -2,3 +2,7 @@
     Permit Price: <input value="<?= $price ?>" name="price" type="number" min="0.00" max="1000.00" step="0.01" />
     <input type="submit" value="Update Price" />
 </form>
+
+<form action="index.php?controller=admin&action=removeallpermits" method="post">
+    <input type="submit" value="Remove All Permits" />
+</form>

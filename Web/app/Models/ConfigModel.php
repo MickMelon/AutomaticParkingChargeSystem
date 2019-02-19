@@ -34,4 +34,23 @@ class ConfigModel
         $config = $query->fetch();
         return $config->Value;
     }
+
+    /**
+     * Sets a config value by the name.
+     * 
+     * @param string $name The config name (matches `Name` column in database)
+     * @param string $value The desired value.
+     * 
+     * @return void
+     */
+    public function setConfigValue($name, $value)
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Config` SET `Value` = :value WHERE `Name` = :name";
+        $query = $db->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':value', $value, PDO::PARAM_STR);
+        $query->execute();
+    }
 }
