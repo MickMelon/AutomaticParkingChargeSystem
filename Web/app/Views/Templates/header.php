@@ -5,13 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--- <link rel="icon" href="img/icon.png"> use this later if/when an icon is made--->
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="icon" href="public/images/icon.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
+        <div class="jumbotron jumbotron-fluid" style="background-image: url('public/images/banner.jpg'); background-repeat: no-repeat; background-size: 100% 300px;">
+            <div class="container">
+                <h1 class="display-4">Smart Parking</h1>
+                <p class="lead">Developed and managed by Error418 for a group project.</p>
+            </div>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -49,10 +56,10 @@
                     <?php } ?>
                 </ul>
             </div>
-        </nav>
-        <?php echo (isset($pageTitle) ? '<h3>' . $pageTitle . '</h3>' : ''); ?>
+        </nav>  
     </header>
     <main>
+    <?php echo (isset($pageTitle) ? '<h3>' . $pageTitle . '</h3>' : ''); ?>
 
 
 
