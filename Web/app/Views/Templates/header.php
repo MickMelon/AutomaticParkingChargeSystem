@@ -1,52 +1,58 @@
 <!DOCTYPE html>
+<html lang="en"> 
 <head>
     <title><?php echo (isset($pageTitle) ? $pageTitle : ''); ?> - <?= $siteTitle ?></title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--- <link rel="icon" href="img/icon.png"> use this later if/when an icon is made--->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#"><?= $siteTitle ?></a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">About Us</a></li>
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
                     <?php if ($loggedIn) { ?>
-                        <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Account Action
-                        <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="index.php?controller=user&action=show">Your Account</a></li>
-                            <li><a href="index.php?controller=vehicle&action=index">Vehicles</a></li>
-                        </ul>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Account Action
+                            <span class="caret"></span></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="index.php?controller=user&action=show">Your Account</a>
+                                <a class="dropdown-item" href="index.php?controller=vehicle&action=index">Vehicles</a>
+                                <?php if ($isAdmin) { ?>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="index.php?controller=admin&action=index">Admin</a>
+                                <?php } ?>
+                            </div>
                         </li>
-                    <?php if ($isAdmin) { ?>
-                        <li><a href="index.php?controller=admin&action=index">Admin</a></li>
-                    <?php } ?>
+                    
                     <?php } else { ?>
                         <!---do nothing --->
                     <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                <?php if ($loggedIn) { ?>
-                        <li><a href="index.php?controller=login&action=logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-                <?php } else { ?>
-                        <li><a href="index.php?controller=login&action=index"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                        <li><a href="index.php?controller=register&action=index"><span class="glyphicon glyphicon-user"></span> Register</a></li>                        
+                    <?php if ($loggedIn) { ?>
+                        <li class="nav-item"><a class="nav-link" href="index.php?controller=login&action=logout"> Logout</a></li>
+                    <?php } else { ?>
+                        <li class="nav-item"><a class="nav-link" href="index.php?controller=login&action=index"> Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?controller=register&action=index"> Register</a></li>                        
                     <?php } ?>
                 </ul>
             </div>
         </nav>
         <?php echo (isset($pageTitle) ? '<h3>' . $pageTitle . '</h3>' : ''); ?>
     </header>
-<main>
+    <main>
 
 
 
