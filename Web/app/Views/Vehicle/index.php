@@ -41,7 +41,7 @@ else { ?>
 <form action="index.php?controller=vehicle&action=add" method="post">
     <div class="form-group">
         <label for="reg">Regisration Mk.:</label>
-        <input type="text" name="name" class="form-control" id="reg" placeholder="e.g. SP63 UNK" minlength="2" maxlength="10" required>
+        <input type="text" name="reg" class="form-control" id="reg" placeholder="e.g. SP63 UNK" minlength="2" maxlength="10" required>
     </div>
     <button type="submit" class="btn btn-primary">Add Vehicle</button>
 </form>

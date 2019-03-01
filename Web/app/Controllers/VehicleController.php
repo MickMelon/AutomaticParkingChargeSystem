@@ -77,7 +77,7 @@ class VehicleController
      */
     public function remove()
     {
-        if (!AuthHelper::isLoggedIn() || !isset($_POST['reg']))
+        if (!AuthHelper::isLoggedIn() || !isset($_GET['reg']))
             exit(header('Location: index.php'));
 
         $reg = filter_var($_GET['reg'], FILTER_SANITIZE_STRING);
@@ -101,7 +101,7 @@ class VehicleController
      */
     public function purchasePermit()
     {
-        if (!AuthHelper::isLoggedIn() || !isset($_POST['reg']))
+        if (!AuthHelper::isLoggedIn() || !isset($_GET['reg']))
             exit(header('Location: index.php'));
 
         $reg = filter_var($_GET['reg'], FILTER_SANITIZE_STRING);
