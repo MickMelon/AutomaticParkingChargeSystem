@@ -5,13 +5,26 @@ if (isset($errors)) {
     } 
 } 
  ?>
+
 <form action="index.php?controller=user&action=submitupdate" method="post" onsubmit="return checkForm()">
-    First Name: <input type="text" name="firstName" value="<?= $user->FirstName ?>" minlength="3" maxlength="16" required><br />
-    Last Name: <input type="text" name="lastName" value="<?= $user->LastName ?>" minlength="3" maxlength="16" required><br />
-    Password: <input type="password" name="password" id="password" minlength="6" required><br />
-    Confirm Password: <input type="password" name="confirmPassword" id="confirmPassword" minlength="6" required><br />
+    <div class="form-group">
+        <label for="first">First Name:</label>
+        <input type="text" name="firstName" class="form-control" id="first" value="<?= $user->FirstName ?>" minlength="3" maxlength="16" required>
+    </div>
+    <div class="form-group">
+        <label for="last">Last Name:</label>
+        <input type="text" name="lastName" class="form-control" id="last" value="<?= $user->LastName ?>" minlength="3" maxlength="16" required>
+    </div>
+    <div class="form-group">
+        <label for="Password">Password:</label>
+        <input type="password" name="password" class="form-control" id="Password" placeholder="**********" minlength="6" required>
+    </div>
+    <div class="form-group">
+        <label for="Passwordconf">Confirm Password:</label>
+        <input type="password" name="confirmPassword" class="form-control" id="Passwordconf" placeholder="**********" minlength="6" required>
+    </div>
     <input type="hidden" name="userId" value="<?= $user->ID ?>" />
-    <input type="submit" value="Update" />
+    <button type="submit" class="btn btn-primary">Update My Information!</button>
 </form>
 
 <script>
