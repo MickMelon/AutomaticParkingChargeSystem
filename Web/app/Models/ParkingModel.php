@@ -27,4 +27,40 @@ class ParkingModel
 
         return $query->fetchAll();
     }
+
+    public function addEntry($reg, $carparkId)
+    {
+        $db = Database::getInstance();
+
+        $sql = "INSERT INTO `Parking` (`Reg`, `EntryDateTime`, `CarparkID`)"
+            . " VALUES (:reg, NOW(), :carparkId)";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->bindParam(':carparkId', $carparkId, PDO::PARAM_INT);
+        $query->execute();
+    }
+
+    public function addExit($reg)
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Parking` SET `ExitDateTime` = NOW()"
+            . " WHERE `Reg` = :reg AND `ExitDateTime` IS NULL OR `ExitDateTime` = '0000-00-00 00:00:00' LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+    }
+
+    public function isInCarpark($reg)
+    {
+        $db = Database::getInstance();
+
+        $sql = "SELECT * FROM `Parking` WHERE `Reg` = :reg AND `ExitDateTime` IS NULL OR `ExitDateTime` = '0000-00-00 00:00:00' LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+
+        $parkingEntry = $query->fetch();
+        return ($parkingEntry != null);
+    }
 }
