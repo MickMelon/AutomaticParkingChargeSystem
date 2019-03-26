@@ -5,16 +5,17 @@ namespace APCS.Server
 {
     public class StateObject
     {
-        public const int BufferSize = 1024;
-        public byte[] Buffer { get; set; }
-        public Socket WorkSocket { get; set; }    
-        public StringBuilder DataString { get; set; }
+        public const int BUFFER_SIZE = 1024;
 
-        public StateObject()
+        public Socket WorkSocket { get; set; }
+        public byte[] Buffer { get; set; }
+        public StringBuilder StringBuilder { get; set; }
+
+        public StateObject(Socket workSocket)
         {
-            WorkSocket = null;
-            Buffer = new byte[BufferSize];
-            DataString = new StringBuilder();
+            WorkSocket = workSocket;
+            Buffer = new byte[BUFFER_SIZE];
+            StringBuilder = new StringBuilder();
         }
     }
 }

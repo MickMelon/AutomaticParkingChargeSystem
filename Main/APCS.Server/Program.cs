@@ -13,28 +13,8 @@ namespace APCS.Server
         /// </summary>
         public static void Main(string[] args)
         {
-            ///Server.StartServer(7777);
-            //Server.Listen();
-            //AsyncServer.StartServer();
-            AsyncSocketListener.StartListening();
-        }
-
-        private static void DoOpenALPR()
-        {
-            Task<Vehicle> recognizeTask = Task.Run(() => OpenALPR.ReadReg(@"car.jpg"));
-            recognizeTask.Wait();
-            var vehicle = recognizeTask.Result;
-
-            if (vehicle.Error)
-            {
-                Console.WriteLine("It fucked up...");
-            }
-            else
-            {
-                Console.WriteLine($"Reg: {vehicle.Reg}");
-                Console.WriteLine($"Confidence: {vehicle.Confidence}");
-                Console.WriteLine($"Processing Time: {vehicle.ProcessingTime}");
-            }
+            var listener = new AsyncSocketListener();
+            listener.Start();
         }
     }
 }
