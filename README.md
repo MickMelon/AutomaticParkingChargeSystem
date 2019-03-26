@@ -20,7 +20,9 @@ The `vendor` folder has been added to the `.gitignore` file because that folder 
 URL: `https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check&type=[type]&reg=[reg]&carparkid=[id]`
 
 `type`: entry OR exit
+
 `reg`: the vehicle reg (i.e. SA07ENW)
+
 `carparkid`: the carpark ID...
 
 Potential results:
