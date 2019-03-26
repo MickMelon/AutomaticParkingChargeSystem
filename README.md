@@ -17,7 +17,11 @@ The `vendor` folder has been added to the `.gitignore` file because that folder 
 
 ## API
 
-URL: `https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check&type=[type]&reg=[reg]&carparkid=[id]`
+**URL**
+
+`https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check&type=[type]&reg=[reg]&carparkid=[id]`
+
+**Parameters**
 
 `type`: entry OR exit
 
@@ -25,7 +29,7 @@ URL: `https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=
 
 `carparkid`: the carpark ID...
 
-Potential results:
+**Potential Results**
 
 `CARPARK_NOT_FOUND` - The carpark ID did not match any in the database.
 
@@ -40,5 +44,7 @@ Potential results:
 `TYPE_NOT_SPECIFIED` - The `type` parameter was not set in the URL, or it was set but not to `entry` or `exit`
 
 `PARAMETERS_MISSING` - One or more of the parameters were missing: `type`, `reg`, or `carparkid`
+
+**JSON Result Format**
 
 The JSON result will be in the following format: `{"Message":"ENTRY_SUCCESS"}`
