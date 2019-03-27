@@ -85,6 +85,18 @@ class ParkingModel
         $query->execute();
     }
 
+    public function getLatestParking($reg)
+    {
+        $db = Database::getInstance();
+
+        $sql = "SELECT * FROM `Parking` WHERE `Reg` = :reg AND `ExitDateTime` <> '0000-00-00 00:00:00' ORDER BY `ExitDateTime` DESC LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->execute();
+
+        return $query->fetch();
+    }
+
     public function isInCarpark($reg)
     {
         $db = Database::getInstance();

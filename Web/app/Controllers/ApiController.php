@@ -59,9 +59,6 @@ class ApiController
             {
                 $this->parkingModel->addEntry($reg, $carparkId);
 
-                // Send the payment email
-                
-
                 $json = new Json(array('Message' => 'ENTRY_SUCCESS'));
                 $json->execute();
                 return;
@@ -72,8 +69,21 @@ class ApiController
                 {
                     $this->parkingModel->addExit($reg);
 
-                    // Send the bill
+                    $parking = $this->parkingModel->getLatestParking($reg);
+                    if ($parking == null) { echo 'wtf'; return; }
+                    $entryDateTime = $parking->EntryDateTime;
 
+                    // Send the payment email
+                    $user = $this->userModel->getUserById($vehicle->UserID);
+                    $message = 'You have an outstanding balance for your time parking at our car park.<br />'
+                        . '<a href="https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=payment&action=makepayment&reg=' 
+                        . $reg . '&entrydatetime=' . $entryDateTime .'">Please click this dodgy link to pay</a><br />'
+                        . 'Thanks,<br />'
+                        . 'Smart Parking Ltd.';
+                    $headers = 'From: payments@smartparkingltd.com' . "\r\n" .
+                        'Reply-To: payments@smartparkingltd.com' . "\r\n" .
+                        'X-Mailer: PHP/' . phpversion();
+                    mail($user->Email, 'Payment for Smart Parking Ltd', $message);
 
                     $json = new Json(array('Message' => 'EXIT_SUCCESS'));
                     $json->execute();
