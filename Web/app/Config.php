@@ -29,6 +29,8 @@ class Config
      */
     const PERMIT_PRICE_POUNDS = 30;
 
+    const HOURLY_PARKING_RATE_POUNDS = 2;
+
     /**
      * Stripe API keys.
      * Stripe test cards: https://stripe.com/docs/testing

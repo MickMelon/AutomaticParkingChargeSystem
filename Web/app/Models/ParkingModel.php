@@ -3,6 +3,7 @@ namespace App\Models;
 
 use App\Database;
 use PDO;
+use App\Config;
 
 /**
  * Used for interacting with the Parking table in the database.
@@ -26,6 +27,39 @@ class ParkingModel
         $query->execute();
 
         return $query->fetchAll();
+    }
+
+    public function getSingle($reg, $entryDateTime)
+    {
+        $db = Database::getInstance();
+
+        $sql = "SELECT * FROM `Parking` WHERE `Reg` = :reg AND `EntryDateTime` = :entryDateTime LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->bindParam(':entryDateTime', $entryDateTime, PDO::PARAM_STR);
+        $query->execute();
+
+        return $query->fetch();
+    }
+
+    public function calculateCosts($reg, $entryDateTime)
+    {
+        $db = Database::getInstance();
+
+        $sql = "SELECT HOUR(TIMEDIFF(`EntryDateTime`, `ExitDateTime`)) AS `Hours`"
+            . " FROM `Parking`"
+            . " WHERE `Reg` = :reg AND `EntryDateTime` = :entryDateTime LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->bindParam(':entryDateTime', $entryDateTime, PDO::PARAM_STR);
+        $query->execute();
+
+        $result = $query->fetch();
+        $hours = $result->Hours;
+
+        $totalCost = ceil($hours) * Config::HOURLY_PARKING_RATE_POUNDS;
+
+        return $totalCost;
     }
 
     public function addEntry($reg, $carparkId)
@@ -62,5 +96,16 @@ class ParkingModel
 
         $parkingEntry = $query->fetch();
         return ($parkingEntry != null);
+    }
+
+    public function setPaid($reg, $entryDateTime)
+    {
+        $db = Database::getInstance();
+
+        $sql = "UPDATE `Parking` SET `Paid` = 1 WHERE `Reg` = :reg AND `EntryDateTime` = :entryDateTime LIMIT 1";
+        $query = $db->prepare($sql);
+        $query->bindParam(':reg', $reg, PDO::PARAM_STR);
+        $query->bindParam(':entryDateTime', $entryDateTime, PDO::PARAM_STR);
+        $query->execute();
     }
 }

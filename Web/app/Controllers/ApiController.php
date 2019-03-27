@@ -59,6 +59,9 @@ class ApiController
             {
                 $this->parkingModel->addEntry($reg, $carparkId);
 
+                // Send the payment email
+                
+
                 $json = new Json(array('Message' => 'ENTRY_SUCCESS'));
                 $json->execute();
                 return;
@@ -68,6 +71,9 @@ class ApiController
                 if ($this->parkingModel->isInCarpark($reg))
                 {
                     $this->parkingModel->addExit($reg);
+
+                    // Send the bill
+
 
                     $json = new Json(array('Message' => 'EXIT_SUCCESS'));
                     $json->execute();
