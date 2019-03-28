@@ -6,11 +6,12 @@ use App\Models\ConfigModel;
 use App\Models\VehicleModel;
 use App\Helpers\AuthHelper;
 use App\View;
+use App\Controller;
 
 /**
  * Used for controlling admin actions.
  */
-class AdminController
+class AdminController extends Controller
 {
     /**
      * The User Model for interacting with the database.
@@ -30,8 +31,9 @@ class AdminController
     /**
      * Creates a new AdminController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->userModel = new UserModel();
         $this->configModel = new ConfigModel();
         $this->vehicleModel = new VehicleModel();
@@ -74,10 +76,10 @@ class AdminController
      */
     public function updatePermitPrice()
     {
-        if (!AuthHelper::isAdmin() || !isset($_POST['price']))
+        if (!AuthHelper::isAdmin() || !isset($this->params['price']))
             exit(header('Location: index.php'));
 
-        $price = $_POST['price'];
+        $price = $this->params['price'];
         $this->configModel->setConfigValue(ConfigModel::PERMIT_PRICE, $price);
 
         header('Location: index.php?controller=admin&action=permits');

@@ -5,11 +5,12 @@ use App\Models\UserModel;
 use App\Helpers\AuthHelper;
 use App\View;
 use App\Util;
+use App\Controller;
 
 /**
  * Used for the user details page.
  */
-class UserController 
+class UserController extends Controller
 {
     /**
      * The User Model for interacting with the database.
@@ -19,8 +20,9 @@ class UserController
     /**
      * Creates a new CustomerController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->userModel = new UserModel();
     }
 
@@ -70,16 +72,16 @@ class UserController
     public function submitUpdate()
     {
         if (!AuthHelper::isLoggedIn()
-            || !isset($_POST['firstName'])
-            || !isset($_POST['lastName'])
-            || !isset($_POST['password'])
-            || !isset($_POST['userId']))
+            || !isset($this->params['firstName'])
+            || !isset($this->params['lastName'])
+            || !isset($this->params['password'])
+            || !isset($this->params['userId']))
             exit(header('Location: index.php'));
 
-        $firstName = $_POST['firstName'];
-        $lastName = $_POST['lastName'];
-        $password = $_POST['password'];
-        $userId = $_POST['userId'];
+        $firstName = $this->params['firstName'];
+        $lastName = $this->params['lastName'];
+        $password = $this->params['password'];
+        $userId = $this->params['userId'];
 
         $this->userModel->updateUser($userId, $firstName, $lastName, $password);
         header('Location: index.php?controller=user&action=show');

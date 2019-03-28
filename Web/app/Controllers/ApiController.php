@@ -7,19 +7,21 @@ use App\Models\ParkingModel;
 use App\Models\CarparkModel;
 use App\Helpers\AuthHelper;
 use App\Json;
+use App\Controller;
 
 /**
  * The Raspberry Pi will use this controller for communications.
  */
-class ApiController
+class ApiController extends Controller
 {
     private $userModel;
     private $vehicleModel;
     private $parkingModel;
     private $carparkModel;
 
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->userModel = new UserModel();
         $this->vehicleModel = new VehicleModel();
         $this->parkingModel = new ParkingModel();
@@ -29,11 +31,11 @@ class ApiController
     public function check()
     {
         // Need to check the IP of the client so not just anyone and their nan can do this
-        if (isset($_GET['type']) && isset($_GET['reg']) && isset($_GET['carparkid']))
+        if (isset($this->params['type']) && isset($this->params['reg']) && isset($this->params['carparkid']))
         {
-            $reg = $_GET['reg'];
-            $type = $_GET['type'];
-            $carparkId = $_GET['carparkid'];
+            $reg = $this->params['reg'];
+            $type = $this->params['type'];
+            $carparkId = $this->params['carparkid'];
 
             // Check the carpark actually exists
             $carpark = $this->carparkModel->getCarparkById($carparkId);

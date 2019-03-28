@@ -6,14 +6,16 @@ use App\Models\VehicleModel;
 use App\Config;
 use App\Helpers\AuthHelper;
 use App\View;
+use App\Controller;
 
-class PaymentController
+class PaymentController extends Controller
 {
     private $parkingModel;
     private $vehicleModel;
 
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->parkingModel = new ParkingModel();
         $this->vehicleModel = new VehicleModel();
     }
@@ -22,11 +24,11 @@ class PaymentController
     {
         if (AuthHelper::isLoggedIn())
         {
-            if (isset($_GET['reg']) &&
-                isset($_GET['entrydatetime']))
+            if (isset($this->params['reg']) &&
+                isset($this->params['entrydatetime']))
             {
-                $reg = $_GET['reg'];
-                $entryDateTime = $_GET['entrydatetime'];
+                $reg = $this->params['reg'];
+                $entryDateTime = $this->params['entrydatetime'];
 
                 // Check if the vehicle reg is valid
                 $vehicle = $this->vehicleModel->getVehicle($reg);
@@ -90,16 +92,16 @@ class PaymentController
     {
         if (AuthHelper::isLoggedIn())
         {
-            if (isset($_POST['reg']) &&
-                isset($_POST['entrydatetime']) &&
-                isset($_POST['cost']))
+            if (isset($this->params['reg']) &&
+                isset($this->params['entrydatetime']) &&
+                isset($this->params['cost']))
             {
-                $reg = $_POST['reg'];
-                $entryDateTime = $_POST['entrydatetime'];
-                $cost = $_POST['cost'];
+                $reg = $this->params['reg'];
+                $entryDateTime = $this->params['entrydatetime'];
+                $cost = $this->params['cost'];
 
                 \Stripe\Stripe::setApiKey(Config::STRIPE_SECRET_KEY);
-                $token = $_POST['stripeToken'];
+                $token = $this->params['stripeToken'];
 
                 $charge = \Stripe\Charge::create(
                     ['amount' => $cost,

@@ -4,11 +4,12 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Helpers\AuthHelper;
 use App\View;
+use App\Controller;
 
 /**
  * Used for registration actions.
  */
-class RegisterController 
+class RegisterController extends Controller
 {
     /**
      * The User Model for interacting with the database.
@@ -18,8 +19,9 @@ class RegisterController
     /**
      * Create a new RegisterController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->userModel = new UserModel();
     }
 
@@ -49,16 +51,16 @@ class RegisterController
     public function register()
     {
         if (!AuthHelper::isLoggedIn()
-            || !isset($_POST['firstName']) 
-            || !isset($_POST['lastName'])
-            || !isset($_POST['email'])
-            || !isset($_POST['password']))
+            || !isset($this->params['firstName']) 
+            || !isset($this->params['lastName'])
+            || !isset($this->params['email'])
+            || !isset($this->params['password']))
             exit(header('Location: index.php'));
             
-        $firstName = filter_var($_POST['firstName'], FILTER_SANITIZE_STRING);
-        $lastName = filter_var($_POST['lastName'], FILTER_SANITIZE_STRING);
-        $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-        $password = $_POST['password'];
+        $firstName = filter_var($this->params['firstName'], FILTER_SANITIZE_STRING);
+        $lastName = filter_var($this->params['lastName'], FILTER_SANITIZE_STRING);
+        $email = filter_var($this->params['email'], FILTER_SANITIZE_EMAIL);
+        $password = $this->params['password'];
 
         $existingUser = $this->userModel->getUserByEmail($email);
         if ($existingUser != null)

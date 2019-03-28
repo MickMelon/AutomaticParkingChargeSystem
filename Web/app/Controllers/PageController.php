@@ -2,12 +2,18 @@
 namespace App\Controllers;
 
 use App\View;
+use App\Controller;
 
 /**
  * Used for displaying basic pages that don't quite fit in other controllers.
  */
-class PageController
+class PageController extends Controller
 {
+    public function __construct(array $params)
+    {
+        parent::__construct($params);
+    }
+    
     /**
      * Displays the home page.
      * 

@@ -5,11 +5,12 @@ use App\Models\CarparkModel;
 use App\Models\ParkingModel;
 use App\Helpers\AuthHelper;
 use App\View;
+use App\Controller;
 
 /**
  * Used for car park pages and actions.
  */
-class CarparkController
+class CarparkController extends Controller
 {
     /**
      * The Carpark Model for interacting with the database.
@@ -24,8 +25,9 @@ class CarparkController
     /**
      * Creates a new CarparkController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->carparkModel = new CarparkModel();
         $this->parkingModel = new ParkingModel();
     }
@@ -53,10 +55,10 @@ class CarparkController
      */
     public function show()
     {
-        if (!AuthHelper::isAdmin() || !isset($_GET['id']))
+        if (!AuthHelper::isAdmin() || !isset($this->params['id']))
             exit(header('Location: index.php'));
             
-        $id = $_GET['id'];
+        $id = $this->params['id'];
         $carpark = $this->carparkModel->getCarparkById($id);
         $logs = $this->parkingModel->getAllForCarpark($id);
 
@@ -76,10 +78,10 @@ class CarparkController
      */
     public function update()
     {
-        if (!AuthHelper::isAdmin() || !isset($_GET['id']))
+        if (!AuthHelper::isAdmin() || !isset($this->params['id']))
             exit(header('Location: index.php'));
 
-        $id = $_GET['id'];
+        $id = $this->params['id'];
         $carpark = $this->carparkModel->getCarparkById($id);
 
         $view = new View('Carpark/update');
@@ -95,12 +97,12 @@ class CarparkController
      */
     public function submitUpdate()
     {
-        if (!AuthHelper::isAdmin() || !isset($_POST['carparkId']))
+        if (!AuthHelper::isAdmin() || !isset($this->params['carparkId']))
             exit(header('Location: index.php'));
 
-        $id = $_POST['carparkId'];
-        $name = $_POST['name'];
-        $price = $_POST['price'];
+        $id = $this->params['carparkId'];
+        $name = $this->params['name'];
+        $price = $this->params['price'];
 
         $this->carparkModel->updateCarpark($id, $name, $price);
         header('Location: index.php?controller=carpark&action=index');

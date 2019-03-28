@@ -5,11 +5,12 @@ use App\Models\UserModel;
 use App\Helpers\AuthHelper;
 use App\View;
 use App\Util;
+use App\Controller;
 
 /**
  * Used for all the login functionality.
  */
-class LoginController 
+class LoginController extends Controller
 {
     /**
      * The User Model for interacting with the database.
@@ -19,8 +20,9 @@ class LoginController
     /**
      * Creates a new LoginController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->userModel = new UserModel();
     }
 
@@ -49,11 +51,11 @@ class LoginController
      */
     public function login()
     {
-        if (AuthHelper::isLoggedIn() || !isset($_POST['email']) || !isset($_POST['password']))
+        if (AuthHelper::isLoggedIn() || !isset($this->params['email']) || !isset($this->params['password']))
             exit(header('Location: index.php'));
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = $this->params['email'];
+        $password = $this->params['password'];
         $result = $this->authenticate($email, $password);
 
         if ($result > 0)

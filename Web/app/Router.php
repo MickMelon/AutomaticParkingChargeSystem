@@ -2,6 +2,7 @@
 namespace App;
 
 use App\Controllers;
+use App\Controller;
 
 /**
  * Used to start the application and to do actions on controllers.
@@ -41,7 +42,8 @@ class Router
         $className = 'App\Controllers\\' . ucfirst($controller) . 'Controller';
         if (class_exists($className, true))  
         {
-            $controllerClass = new $className();
+            $params = $this->getParams();
+            $controllerClass = new $className($params);
             if (method_exists($controllerClass, $action))
             {
                 $controllerClass->{ $action }();
@@ -53,5 +55,28 @@ class Router
         // controller or action were not found.
         $pageController = new Controllers\PageController();
         $pageController->error();    
+    }
+
+    private function getParams()
+    {
+        $params = array();
+        $method = $_SERVER['REQUEST_METHOD'];
+
+        if ($method == 'POST')
+        {
+            foreach ($_POST as $key => $val)
+            {
+                $params[$key] = filter_input(INPUT_POST, $key);
+            }
+        }
+        else if ($method == 'GET')
+        {
+            foreach ($_GET as $key => $val)
+            {
+                $params[$key] = filter_input(INPUT_GET, $key);
+            }
+        }
+
+        return $params;
     }
 }

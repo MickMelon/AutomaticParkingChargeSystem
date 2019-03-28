@@ -5,11 +5,12 @@ use App\Models\VehicleModel;
 use App\Helpers\AuthHelper;
 use App\Config;
 use App\View;
+use App\Controller;
 
 /**
  * Used for all the vehicle actions.
  */
-class VehicleController 
+class VehicleController extends Controller
 {
     /**
      * The Vehicle Model for interacting with the database.
@@ -19,8 +20,9 @@ class VehicleController
     /**
      * Create a new VehicleController object.
      */
-    public function __construct()
+    public function __construct(array $params)
     {
+        parent::__construct($params);
         $this->vehicleModel = new VehicleModel();
     }
 
@@ -52,10 +54,10 @@ class VehicleController
      */
     public function add()
     {
-        if (!AuthHelper::isLoggedIn() || !isset($_POST['reg']))
+        if (!AuthHelper::isLoggedIn() || !isset($this->params['reg']))
             exit(header('Location: index.php'));
         
-        $reg = filter_var($_POST['reg'], FILTER_SANITIZE_STRING);
+        $reg = filter_var($this->params['reg'], FILTER_SANITIZE_STRING);
         $userId = $_SESSION['id'];
 
         $existingVehicle = $this->vehicleModel->getVehicle($reg);
@@ -77,10 +79,10 @@ class VehicleController
      */
     public function remove()
     {
-        if (!AuthHelper::isLoggedIn() || !isset($_GET['reg']))
+        if (!AuthHelper::isLoggedIn() || !isset($this->params['reg']))
             exit(header('Location: index.php'));
 
-        $reg = filter_var($_GET['reg'], FILTER_SANITIZE_STRING);
+        $reg = filter_var($this->params['reg'], FILTER_SANITIZE_STRING);
         $userId = $_SESSION['id'];
         $vehicle = $this->vehicleModel->getVehicle($reg);
 
@@ -101,10 +103,10 @@ class VehicleController
      */
     public function purchasePermit()
     {
-        if (!AuthHelper::isLoggedIn() || !isset($_GET['reg']))
+        if (!AuthHelper::isLoggedIn() || !isset($this->params['reg']))
             exit(header('Location: index.php'));
 
-        $reg = filter_var($_GET['reg'], FILTER_SANITIZE_STRING);
+        $reg = filter_var($this->params['reg'], FILTER_SANITIZE_STRING);
         $userId = $_SESSION['id'];
         $vehicle = $this->vehicleModel->getVehicle($reg);
 
@@ -137,13 +139,13 @@ class VehicleController
      */
     public function submitPermitPayment()
     {
-        if (!isset($_POST['reg']))
+        if (!isset($this->params['reg']))
             exit(header('Location: index.php'));
         
-        $reg = $_POST['reg'];
+        $reg = $this->params['reg'];
 
         \Stripe\Stripe::setApiKey(Config::STRIPE_SECRET_KEY);
-        $token = $_POST['stripeToken'];
+        $token = $this->params['stripeToken'];
 
         $charge = \Stripe\Charge::create(
                 ['amount' => Config::PERMIT_PRICE_POUNDS * 100,
