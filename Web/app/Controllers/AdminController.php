@@ -63,11 +63,15 @@ class AdminController extends Controller
             exit(header('Location: index.php'));
 
         $value = $this->configModel->getConfigValue(ConfigModel::PERMIT_PRICE);
-        $price = floatval($value);
+        $permitPrice = floatval($value);
+
+        $value = $this->configModel->getConfigValue(ConfigModel::HOURLY_RATE);
+        $hourlyRate = floatval($value);
 
         $view = new View('Admin/permits');
-        $view->assign('pageTitle', 'Permits - Admin Panel');
-        $view->assign('price', $price);
+        $view->assign('pageTitle', 'Prices');
+        $view->assign('permitPrice', $permitPrice);
+        $view->assign('hourlyRate', $hourlyRate);
         $view->render();
     }
 
@@ -81,6 +85,17 @@ class AdminController extends Controller
 
         $price = $this->params['price'];
         $this->configModel->setConfigValue(ConfigModel::PERMIT_PRICE, $price);
+
+        header('Location: index.php?controller=admin&action=permits');
+    }
+
+    public function updateHourlyRate()
+    {
+        if (!AuthHelper::isAdmin() || !isset($this->params['price']))
+            exit(header('Location: index.php'));
+
+        $price = $this->params['price'];
+        $this->configModel->setConfigValue(ConfigModel::HOURLY_RATE, $price);
 
         header('Location: index.php?controller=admin&action=permits');
     }
