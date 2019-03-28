@@ -13,6 +13,7 @@ class ConfigModel
      * Constants for the config table in the database
      */
     const PERMIT_PRICE = 'PermitPrice'; 
+    const HOURLY_RATE = 'HourlyRate';
 
     /**
      * Gets a config value by the name. Use the constants in this class 

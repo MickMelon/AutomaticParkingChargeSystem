@@ -3,6 +3,7 @@ namespace App\Controllers;
 
 use App\Models\ParkingModel;
 use App\Models\VehicleModel;
+use App\Models\ConfigModel;
 use App\Config;
 use App\Helpers\AuthHelper;
 use App\View;
@@ -12,12 +13,14 @@ class PaymentController extends Controller
 {
     private $parkingModel;
     private $vehicleModel;
+    private $configModel;
 
     public function __construct(array $params)
     {
         parent::__construct($params);
         $this->parkingModel = new ParkingModel();
         $this->vehicleModel = new VehicleModel();
+        $this->configModel = new ConfigModel();
     }
 
     public function makePayment()
@@ -74,7 +77,8 @@ class PaymentController extends Controller
                     return;
                 }
 
-                $cost = $this->parkingModel->calculateCosts($reg, $entryDateTime);
+                $hourlyRate = $this->configModel->getValue(ConfigModel::HOURLY_RATE);
+                $cost = $this->parkingModel->calculateCosts($reg, $entryDateTime, $hourlyRate);
 
                 // Show the payment form
                 $view = new View('Payment/make_payment');

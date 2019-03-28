@@ -25,13 +25,6 @@ class Config
     const SITE_TITLE = 'APCS-Web';
 
     /**
-     * The price of the season permit in pounds.
-     */
-    const PERMIT_PRICE_POUNDS = 30;
-
-    const HOURLY_PARKING_RATE_POUNDS = 2;
-
-    /**
      * Stripe API keys.
      * Stripe test cards: https://stripe.com/docs/testing
      * Test Visa: 4242 4242 4242 4242

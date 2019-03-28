@@ -42,7 +42,7 @@ class ParkingModel
         return $query->fetch();
     }
 
-    public function calculateCosts($reg, $entryDateTime)
+    public function calculateCosts($reg, $entryDateTime, $hourlyRate)
     {
         $db = Database::getInstance();
 
@@ -57,7 +57,7 @@ class ParkingModel
         $result = $query->fetch();
         $hours = $result->Hours;
 
-        $totalCost = ceil($hours) * Config::HOURLY_PARKING_RATE_POUNDS;
+        $totalCost = ceil($hours) * $hourlyRate;
 
         return $totalCost;
     }
