@@ -9,12 +9,29 @@ use App\Helpers\AuthHelper;
 use App\View;
 use App\Controller;
 
+/**
+ * Used for controlling the payments.
+ */
 class PaymentController extends Controller
 {
+    /**
+     * The ParkingModel
+     */
     private $parkingModel;
+
+    /**
+     * The VehicleModel
+     */
     private $vehicleModel;
+
+    /**
+     * The ConfigModel
+     */
     private $configModel;
 
+    /**
+     * Creates a new instance of the PaymentController class.
+     */
     public function __construct(array $params)
     {
         parent::__construct($params);
@@ -23,6 +40,9 @@ class PaymentController extends Controller
         $this->configModel = new ConfigModel();
     }
 
+    /**
+     * Shows the make payment page.
+     */
     public function makePayment()
     {
         if (AuthHelper::isLoggedIn())
@@ -88,10 +108,13 @@ class PaymentController extends Controller
                 $view->assign('reg', $reg);
                 $view->assign('entryDateTime', $entryDateTime);
                 $view->render();
-            } else echo 'parameters not set';
-        } else echo 'not logged in';
+            }
+        }
     }
 
+    /**
+     * Called when the payment has been submitted.
+     */
     public function submitPayment()
     {
         if (AuthHelper::isLoggedIn())

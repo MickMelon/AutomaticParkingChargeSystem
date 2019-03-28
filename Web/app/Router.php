@@ -57,6 +57,9 @@ class Router
         $pageController->error();    
     }
 
+    /**
+     * Gets the GET/POST parameters and cleans them.
+     */
     private function getParams()
     {
         $params = array();

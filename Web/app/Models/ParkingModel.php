@@ -29,6 +29,12 @@ class ParkingModel
         return $query->fetchAll();
     }
 
+    /**
+     * Gets a single parking log.
+     *
+     * @param string $reg The vehicle registration number.
+     * @param datetime $entryDateTime The time and date that they entered the car park.
+     */
     public function getSingle($reg, $entryDateTime)
     {
         $db = Database::getInstance();
@@ -42,6 +48,13 @@ class ParkingModel
         return $query->fetch();
     }
 
+    /**
+     * Calculates the cost for the time that a vehicle spent in the car park.
+     *
+     * @param string $reg The vehicle registration number.
+     * @param datetime $entryDateTime The time and date that they entered the car park.
+     * @param double $hourlyRate The hourly rate.
+     */
     public function calculateCosts($reg, $entryDateTime, $hourlyRate)
     {
         $db = Database::getInstance();
@@ -62,6 +75,13 @@ class ParkingModel
         return $totalCost;
     }
 
+    /**
+     * Adds a new parking entry.
+     *
+     * @param string $reg The vehicle registration number.
+     * @param int $carparkId The carpark ID.
+     * @return void
+     */
     public function addEntry($reg, $carparkId)
     {
         $db = Database::getInstance();
@@ -74,6 +94,11 @@ class ParkingModel
         $query->execute();
     }
 
+    /**
+     * Updates a parking entry to set the exit date and time.
+     *
+     * @param string $reg The vehicle registration number.
+     */
     public function addExit($reg)
     {
         $db = Database::getInstance();
@@ -85,6 +110,11 @@ class ParkingModel
         $query->execute();
     }
 
+    /**
+     * Gets the latest parking log for a vehicle.
+     *
+     * @param string $reg The vehicle registration number.
+     */
     public function getLatestParking($reg)
     {
         $db = Database::getInstance();
@@ -97,6 +127,13 @@ class ParkingModel
         return $query->fetch();
     }
 
+    /**
+     * Checks if the vehicle is currently in a car park. This is determined by whether the ExitDateTime
+     * has been set.
+     *
+     * @param string $reg The vehicle registration number.
+     * @return boolean Whether the vehicle is in the car park.
+     */
     public function isInCarpark($reg)
     {
         $db = Database::getInstance();
@@ -110,6 +147,12 @@ class ParkingModel
         return ($parkingEntry != null);
     }
 
+    /**
+     * Set a parking entry to be paid for.
+     *
+     * @param string $reg The vehicle registration number.
+     * @param datetime $entryDateTime The date and time the vehicle entered the car park.
+     */
     public function setPaid($reg, $entryDateTime)
     {
         $db = Database::getInstance();

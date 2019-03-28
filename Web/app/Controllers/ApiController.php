@@ -14,11 +14,29 @@ use App\Controller;
  */
 class ApiController extends Controller
 {
+    /**
+     * The UserModel
+     */
     private $userModel;
+
+    /**
+     * The VehicleModel
+     */
     private $vehicleModel;
+
+    /**
+     * The ParkingModel
+     */
     private $parkingModel;
+
+    /**
+     * The CarparkModel
+     */
     private $carparkModel;
 
+    /**
+     * Creates a new instance of the ApiController class.
+     */
     public function __construct(array $params)
     {
         parent::__construct($params);
@@ -28,6 +46,10 @@ class ApiController extends Controller
         $this->carparkModel = new CarparkModel();
     }
 
+    /**
+     * Called from the Raspberry Pi. It will check whether a vehicle should be allowed to enter
+     * or exit the car park and return the appropriate result.
+     */
     public function check()
     {
         // Need to check the IP of the client so not just anyone and their nan can do this

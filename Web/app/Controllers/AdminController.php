@@ -89,6 +89,9 @@ class AdminController extends Controller
         header('Location: index.php?controller=admin&action=permits');
     }
 
+    /**
+     * Called when the update hourly rate form is submitted.
+     */
     public function updateHourlyRate()
     {
         if (!AuthHelper::isAdmin() || !isset($this->params['price']))
