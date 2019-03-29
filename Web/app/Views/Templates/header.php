@@ -19,32 +19,31 @@
                 <p class="lead">Developed and managed by Error418 for a group project.</p>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="#"><?= $siteTitle ?></a>
-                </div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.php"><?= $siteTitle ?></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExample03">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Documentation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
                     <?php if ($loggedIn) { ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Account Action
-                            <span class="caret"></span></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="index.php?controller=user&action=show">Your Account</a>
-                                <a class="dropdown-item" href="index.php?controller=vehicle&action=index">Vehicles</a>
-                                <?php if ($isAdmin) { ?>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="index.php?controller=admin&action=index">Admin</a>
-                                <?php } ?>
-                            </div>
-                        </li>
-                    
-                    <?php } else { ?>
-                        <!---do nothing --->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account Action</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        <a class="dropdown-item" href="index.php?controller=user&action=show">Your Account</a>
+                        <a class="dropdown-item" href="index.php?controller=vehicle&action=index">Vehicles</a>
+                        <?php if ($isAdmin) { ?>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="index.php?controller=admin&action=index">Admin</a>
+                        <?php } ?>
+                        </div>
+                    </li>
                     <?php } ?>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -56,7 +55,7 @@
                     <?php } ?>
                 </ul>
             </div>
-        </nav>  
+        </nav> 
     </header>
     <main>
     <?php echo (isset($pageTitle) ? '<h3>' . $pageTitle . '</h3>' : ''); ?>
