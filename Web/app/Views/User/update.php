@@ -16,12 +16,12 @@ if (isset($errors)) {
         <input type="text" name="lastName" class="form-control" id="last" value="<?= $user->LastName ?>" minlength="3" maxlength="16" required>
     </div>
     <div class="form-group">
-        <label for="Password">Password:</label>
-        <input type="password" name="password" class="form-control" id="Password" placeholder="**********" minlength="6" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" class="form-control" id="password" placeholder="**********" minlength="6" required>
     </div>
     <div class="form-group">
-        <label for="Passwordconf">Confirm Password:</label>
-        <input type="password" name="confirmPassword" class="form-control" id="Passwordconf" placeholder="**********" minlength="6" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" name="confirmPassword" class="form-control" id="confirmPassword" placeholder="**********" minlength="6" required>
     </div>
     <input type="hidden" name="userId" value="<?= $user->ID ?>" />
     <button type="submit" class="btn btn-primary">Update My Information!</button>
