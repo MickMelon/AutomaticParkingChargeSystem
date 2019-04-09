@@ -13,10 +13,10 @@
 </head>
 <body>
     <header>
-        <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0; background-image: url('public/images/banner.jpg'); background-repeat: no-repeat; background-size: 100% 300px;">
+        <div class="jumbotron jumbotron-fluid" style="margin-bottom: 0; background-image: url('public/images/banner.jpg'); background-repeat: no-repeat; background-size: 100% 400px;">
             <div class="container">
-                <h1 class="display-4">Smart Parking</h1>
-                <p class="lead">Developed and managed by Error418 for a group project.</p>
+                <h1 class="display-4 outline">Smart Parking</h1>
+                <p class="lead outline">Developed and managed by Error418 for a group project.</p>
             </div>
         </div>
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">

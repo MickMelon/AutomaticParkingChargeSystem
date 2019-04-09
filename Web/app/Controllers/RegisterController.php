@@ -50,7 +50,7 @@ class RegisterController extends Controller
      */
     public function register()
     {
-        if (!AuthHelper::isLoggedIn()
+        if (AuthHelper::isLoggedIn()
             || !isset($this->params['firstName']) 
             || !isset($this->params['lastName'])
             || !isset($this->params['email'])

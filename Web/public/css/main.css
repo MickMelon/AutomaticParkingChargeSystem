@@ -1,7 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 html{
-    margin-left: 5%;
-    margin-right: 5%;
+
     font-family: Montserrat;
 }
 main{
@@ -17,4 +16,8 @@ main{
 .lead{
     font-weight: bolder;
     color: rgb(0, 200, 250);
+}
+
+.outline {
+    text-shadow: -1px -1px 0 #333, 1px -1px 0 #333, -1px 1px 0 #333, 1px 1px 0 #333;
 }
