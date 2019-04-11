@@ -53,10 +53,9 @@ class ApiController extends Controller
     public function check()
     {
         // Need to check the IP of the client so not just anyone and their nan can do this
-        if (isset($this->params['type']) && isset($this->params['reg']) && isset($this->params['carparkid']))
+        if (isset($this->params['reg']) && isset($this->params['carparkid']))
         {
             $reg = $this->params['reg'];
-            $type = $this->params['type'];
             $carparkId = $this->params['carparkid'];
 
             // Check the carpark actually exists
@@ -78,8 +77,24 @@ class ApiController extends Controller
                 return;
             }
 
-            // Check if the type has been set
-            if ($type == 'entry' || $type == 'enter')
+            // Check if the vehicle is already in the car park,
+            // this will tell us that the vehicle wants to leave
+            if ($this->parkingModel->isInCarpark($reg))
+            {
+                $this->parkingModel->addExit($reg);
+
+                $parking = $this->parkingModel->getLatestParking($reg);
+                if ($parking == null) { echo 'wtf'; return; }
+                $entryDateTime = $parking->EntryDateTime;
+
+                $this->sendPaymentEmail($vehicle->UserID, $reg, $entryDateTime);
+
+                $json = new Json(array('Message' => 'EXIT_SUCCESS'));
+                $json->execute();
+                return;
+            }
+            // If not already in car park, then the vehicle is trying to enter
+            else
             {
                 $this->parkingModel->addEntry($reg, $carparkId);
 
@@ -87,48 +102,24 @@ class ApiController extends Controller
                 $json->execute();
                 return;
             }
-            else if ($type == 'exit' || $type == 'leave')
-            {
-                if ($this->parkingModel->isInCarpark($reg))
-                {
-                    $this->parkingModel->addExit($reg);
-
-                    $parking = $this->parkingModel->getLatestParking($reg);
-                    if ($parking == null) { echo 'wtf'; return; }
-                    $entryDateTime = $parking->EntryDateTime;
-
-                    // Send the payment email
-                    $user = $this->userModel->getUserById($vehicle->UserID);
-                    $message = 'You have an outstanding balance for your time parking at our car park.<br />'
-                        . '<a href="https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=payment&action=makepayment&reg=' 
-                        . $reg . '&entrydatetime=' . $entryDateTime .'">Please click this dodgy link to pay</a><br />'
-                        . 'Thanks,<br />'
-                        . 'Smart Parking Ltd.';
-                    $headers = 'From: payments@smartparkingltd.com' . "\r\n" .
-                        'Reply-To: payments@smartparkingltd.com' . "\r\n" .
-                        'X-Mailer: PHP/' . phpversion();
-                    mail($user->Email, 'Payment for Smart Parking Ltd', $message);
-
-                    $json = new Json(array('Message' => 'EXIT_SUCCESS'));
-                    $json->execute();
-                    return;
-                }
-                else
-                {
-                    $json = new Json(array('Message' => 'PARKING_ENTRY_NOT_FOUND'));
-                    $json->execute();
-                    return;
-                }
-            }
-            else
-            {
-                $json = new Json(array('Message' => 'TYPE_NOT_SPECIFIED'));
-                $json->execute();
-                return;            
-            }
         }
 
         $json = new Json(array('Message' => 'PARAMETERS_MISSING'));
         $json->execute();
+    }
+
+    public function sendPaymentEmail($userId, $reg, $entryDateTime)
+    {
+        // Send the payment email
+        $user = $this->userModel->getUserById($userId);
+        $message = 'You have an outstanding balance for your time parking at our car park.<br />'
+            . '<a href="https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=payment&action=makepayment&reg=' 
+            . $reg . '&entrydatetime=' . $entryDateTime .'">Please click this dodgy link to pay</a><br />'
+            . 'Thanks,<br />'
+            . 'Smart Parking Ltd.';
+        $headers = 'From: payments@smartparkingltd.com' . "\r\n" .
+            'Reply-To: payments@smartparkingltd.com' . "\r\n" .
+            'X-Mailer: PHP/' . phpversion();
+        mail($user->Email, 'Payment for Smart Parking Ltd', $message);
     }
 }
