@@ -19,11 +19,9 @@ The `vendor` folder has been added to the `.gitignore` file because that folder 
 
 **URL**
 
-`https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check&type=[type]&reg=[reg]&carparkid=[id]`
+`https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check&reg=[reg]&carparkid=[id]`
 
 **Parameters**
-
-`type`: entry OR exit
 
 `reg`: the vehicle reg (i.e. SA07ENW)
 
@@ -41,9 +39,7 @@ The `vendor` folder has been added to the `.gitignore` file because that folder 
 
 `PARKING_ENTRY_NOT_FOUND` - This message will appear when calling for the vehicle to exit if the entry for the reg did not exist or if the ExitDateTime is not null or not set to default. This shouldn't happen.
 
-`TYPE_NOT_SPECIFIED` - The `type` parameter was not set in the URL, or it was set but not to `entry` or `exit`
-
-`PARAMETERS_MISSING` - One or more of the parameters were missing: `type`, `reg`, or `carparkid`
+`PARAMETERS_MISSING` - One or more of the parameters were missing: `reg` or `carparkid`
 
 **JSON Result Format**
 
