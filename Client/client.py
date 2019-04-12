@@ -3,8 +3,8 @@ import requests
 URL = "https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check"
 CARPARKID = 1 # ID of the carpark this client belongs to
 
-def check(carparkid, reg):
-    params = {'carparkid':carparkid, 'reg':reg}
+def check(reg):
+    params = {'carparkid':CARPARKID, 'reg':reg}
     result = requests.get(url = URL, params = params)
     data = result.json()
 
