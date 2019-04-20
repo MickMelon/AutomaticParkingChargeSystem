@@ -96,6 +96,7 @@ image1, buffer1 = compare()
 timestamp = datetime.now()
 plate = ''
 
+#this loop ensures program keeps running until it's closed by user
 while (True):
 	image2, buffer2 = compare()
 
@@ -105,35 +106,41 @@ while (True):
 			pixdiff = abs(buffer1[x,y][1]- buffer2[x,y][1])
 			if pixdiff > difference:		
 				changedpixels += 1
+				
+	#if pixels in camera image change (aka if motion is detected)
 	if changedpixels > pixels:
 		filename = newimage(width, height)
 
-	image1 = image2
-	buffer1 = buffer2
+		image1 = image2
+		buffer1 = buffer2
 	
-	timestamp2 = datetime.now()
+		timestamp2 = datetime.now()
 	
-	# shell command to get license plate no. from captured image
-	myCmd = os.popen('alpr -c gb ' + filename).read()
-	print (myCmd)
-#if license plate was found, call function to extract most likely number from list
-	if (myCmd != "No license plates found.\n"):
-		plate = getPlate(myCmd)
+		# shell command to get license plate no. from captured image
+		myCmd = os.popen('alpr -c gb ' + filename).read()
+		print (myCmd)
+		#if license plate was found, call function to extract most likely number from list
+		if (myCmd != "No license plates found.\n"):
+			plate = getPlate(myCmd)
 		
-	# Call to the check function
-		message = client.check(plate)
+		#Call to the client API check function
+			message = client.check(plate)
 
-# Check the result
-		if (message == 'ENTRY_SUCCESS'):
-			client.handle_entry()
-			time.sleep(20)
+	# Check the result
+			if (message == 'ENTRY_SUCCESS'):
+				client.handle_entry()
+				print(message)
+				time.sleep(15)
 			
-		elif (message == 'EXIT_SUCCESS'):
-			client.handle_exit()
-			time.sleep(20)
+			elif (message == 'EXIT_SUCCESS'):
+				client.handle_exit()
+				print(message)
+				time.sleep(15)
+			else:
+				client.handle_error(message)
+				print(message)
 		else:
-			client.handle_error(message)
-		print(message)
+			print("None found!")
+		#delete image file after processing to stop the device memory being bloated
+		os.remove(filename)
 
-	else:
-		print("None found!")
