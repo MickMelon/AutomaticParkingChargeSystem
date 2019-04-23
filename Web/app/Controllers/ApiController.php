@@ -84,7 +84,6 @@ class ApiController extends Controller
                 $this->parkingModel->addExit($reg);
 
                 $parking = $this->parkingModel->getLatestParking($reg);
-                if ($parking == null) { echo 'wtf'; return; }
                 $entryDateTime = $parking->EntryDateTime;
 
                 $this->sendPaymentEmail($vehicle->UserID, $reg, $entryDateTime);
@@ -114,7 +113,7 @@ class ApiController extends Controller
         $user = $this->userModel->getUserById($userId);
         $message = 'You have an outstanding balance for your time parking at our car park.<br />'
             . '<a href="https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=payment&action=makepayment&reg=' 
-            . $reg . '&entrydatetime=' . $entryDateTime .'">Please click this dodgy link to pay</a><br />'
+            . $reg . '&entrydatetime=' . $entryDateTime .'">Please click this link to pay</a><br />'
             . 'Thanks,<br />'
             . 'Smart Parking Ltd.';
         $headers = 'From: payments@smartparkingltd.com' . "\r\n" .
