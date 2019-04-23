@@ -3,6 +3,7 @@ import os
 import io
 import picamera
 import time
+import client
 from datetime import datetime
 from PIL import Image
 
@@ -27,6 +28,8 @@ def getPlate(myCmd):
 # Finally, remove whitespace 
 	plate = plate.strip(' ');
 
+#following code was supposed to keep track of which cars were entering/leaving w/ a text file
+#but there were issues with it so it's been disabled
 	#txtFile = "PlatesInPark.txt"
 	#search = plate + "\n"
 
@@ -61,7 +64,6 @@ def getPlate(myCmd):
 		
 #If plate isn't in file, car is entering park. Append current plate to file
 #If plate is in file, car is leaving. Remove current plate from file
-	#print (plate)
 	return plate
 
 # declare camera object
@@ -94,6 +96,7 @@ image1, buffer1 = compare()
 timestamp = datetime.now()
 plate = ''
 
+#this loop ensures program keeps running until it's closed by user
 while (True):
 	image2, buffer2 = compare()
 
@@ -103,27 +106,41 @@ while (True):
 			pixdiff = abs(buffer1[x,y][1]- buffer2[x,y][1])
 			if pixdiff > difference:		
 				changedpixels += 1
+				
+	#if pixels in camera image change (aka if motion is detected)
 	if changedpixels > pixels:
 		filename = newimage(width, height)
 
-	image1 = image2
-	buffer1 = buffer2
+		image1 = image2
+		buffer1 = buffer2
 	
-	timestamp2 = datetime.now()
-	print ("TImestamp 1:" + str(timestamp))
-	print ("TImestamp 2:" +str(timestamp2))
+		timestamp2 = datetime.now()
 	
-	# shell command to get license plate no. from captured image
-	myCmd = os.popen('alpr -c gb ' + filename).read()
-	print (myCmd)
-#if license plate was found, call function to extract most likely number from list
-	if (myCmd != "No license plates found.\n" and myCmd != prevPlate):
-		plate = getPlate(myCmd)
-		import urllib.request
-		contents = urllib.request.urlopen("https://mayar.abertay.ac.uk/~cmp311gc1801/index.php?controller=api&action=check").read()
+		# shell command to get license plate no. from captured image
+		myCmd = os.popen('alpr -c gb ' + filename).read()
+		print (myCmd)
+		#if license plate was found, call function to extract most likely number from list
+		if (myCmd != "No license plates found.\n"):
+			plate = getPlate(myCmd)
 		
-	#elif (myCmd==prevPlate and (timestamp2-timestamp <=60000)):
-		#most recent car is same one being detected, put it on a 1 minute delay
-		#time.sleep(60)
-	else:
-		print("None found!")
+		#Call to the client API check function
+			message = client.check(plate)
+
+	# Check the result
+			if (message == 'ENTRY_SUCCESS'):
+				client.handle_entry()
+				print(message)
+				time.sleep(15)
+			
+			elif (message == 'EXIT_SUCCESS'):
+				client.handle_exit()
+				print(message)
+				time.sleep(15)
+			else:
+				client.handle_error(message)
+				print(message)
+		else:
+			print("None found!")
+		#delete image file after processing to stop the device memory being bloated
+		os.remove(filename)
+
