@@ -1,7 +1,6 @@
-<p>This is the home page.</p>
+<p>Aenean dictum, felis vel finibus faucibus, dolor nisl interdum est, nec vehicula neque sapien ut enim. Donec feugiat elementum ipsum vitae posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed tellus nibh, dictum auctor feugiat in, accumsan ac orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean blandit neque eu ex posuere pulvinar. Mauris ac laoreet tellus. Praesent dignissim sem et diam cursus suscipit. Phasellus a lectus a nisl suscipit imperdiet. </p>
 
-<?php
-    echo "Login details: [ Email: test@user.com, Password: P@ssw0rd ]<br>";
-    echo "Admin details: [ Email: admin@admin.com, Password: P@ssw0rd ]<br>";
-    echo "Payment details: [ Card: 4242 4242 4242 4242, Email: gidizub@shop4mail.net, put random shit for rest and ignore remember me]";
-?>
+<h3>Services</h3>
+
+
+Vivamus at tellus id orci bibendum vestibulum. Pellentesque maximus nisl auctor felis porttitor, ut varius sem mattis. Vestibulum dictum eu purus et lobortis. Nulla lobortis ipsum ut libero placerat convallis. Etiam egestas id libero at porta. Suspendisse auctor interdum massa. Nulla vestibulum commodo tincidunt. Sed mollis vehicula dictum. Mauris viverra tincidunt tortor, id pellentesque ligula maximus ac. Vivamus in est consequat, feugiat magna quis, vehicula justo. Nunc sit amet tortor ipsum. Quisque vel interdum purus. Fusce non purus in neque ultrices tempor eget eu ante. 

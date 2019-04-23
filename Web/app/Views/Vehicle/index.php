@@ -1,7 +1,3 @@
-<a class="btn btn-light" href="index.php?controller=vehicle&action=add">Add Vehicle</a><br />
-
-<hr />
-
 <?php if ($errors) foreach($errors as $error) { ?>
     <p style="color: red;"><?= $error ?></p>
 <?php } ?>
@@ -14,7 +10,7 @@ else { ?>
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Regisration Mk.</th>
+                <th scope="col">Registration Mk.</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -40,8 +36,8 @@ else { ?>
 
 <form action="index.php?controller=vehicle&action=add" method="post">
     <div class="form-group">
-        <label for="reg">Regisration Mk.:</label>
-        <input type="text" name="reg" class="form-control" id="reg" placeholder="e.g. SP63 UNK" minlength="2" maxlength="10" required>
+        <label for="reg">Registration Mk.:</label>
+        <input type="text" name="reg" class="form-control" id="reg" placeholder="e.g. SP63 RNA" minlength="2" maxlength="10" required>
     </div>
     <button type="submit" class="btn btn-primary">Add Vehicle</button>
 </form>
