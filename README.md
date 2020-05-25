@@ -3,6 +3,16 @@ The web application for the Automatic Parking Charge System developed as a group
 
 Site: https://mayar.abertay.ac.uk/~cmp311gc1801/
 
+## Description
+
+This project was the development of a parking system that scans the registration plates of vehicles when they enter and leave a car park, and automatically charges customers based on the length of their stay. This system was requested by the client Smart Parking Ltd. The client desires a modern and elegant parking system solution that will be far more convenient to customers than solutions currently available through competitors, and that will allow changes to parking prices to be quickly and easily implemented throughout the entire system.
+
+To  achieve  this,  a  system  was  created  involving  a  website,  client-server  setup,  a license-plate  recognising  API  (known  as  OpenALPR;  Automatic  License  Plate Recognition), and a Raspberry Pi device. The website is what a customer will use to create  an  account,  register  vehicles  to that  account,  and  purchase  season  permits. The  server  contains  details  of  registered  customers  and  vehicles  owned  by  the customers. The Raspberry Pi controls a camera to capture images of license plates and interacts with the API that identifies the license number in the images. Once the API has identified a valid plate, the device sends this plate to the server database via a client API. If this plate is registered to a customer, the device would allow entry to the car park. If it is not registered, entry is denied. The API also keeps track of whether the given vehicle is entering or leaving, and if it is leaving the customer who owns it is charged accordingly.  
+
+The result of this project was a robust system with a secure and functioning front-end, and a mostly-accurate license plate detector. It adequately demonstrates all the core functionality requested  and  forms  a  solid  basis  for  a  viable  real-world  car  park technology. It would need to be scaled up appropriately and refactored for commercial use, but in its current form it successfully carries out all necessary tasks on a minor scale.
+
+[See White Paper](https://github.com/MickMelon/AutomaticParkingChargeSystem/blob/master/WhitePaper.pdf)
+
 ## Development Enviroment
 
 To set the dev environment up for the site, you'll need to get Composer 
